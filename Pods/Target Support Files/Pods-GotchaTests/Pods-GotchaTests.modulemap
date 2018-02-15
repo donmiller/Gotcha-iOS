@@ -1,0 +1,6 @@
+framework module Pods_GotchaTests {
+  umbrella header "Pods-GotchaTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

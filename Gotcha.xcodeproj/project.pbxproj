@@ -7,12 +7,28 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7CE939975595D2EF2F21AD09 /* Pods_GotchaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E92D5A7043FBCD91DF11FD31 /* Pods_GotchaTests.framework */; };
+		953D843A202E70CA001E4FD7 /* RestAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953D8439202E70CA001E4FD7 /* RestAPIManager.swift */; };
+		953D843B202E70CA001E4FD7 /* RestAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953D8439202E70CA001E4FD7 /* RestAPIManager.swift */; };
+		953D843D202E744E001E4FD7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953D843C202E744E001E4FD7 /* Constants.swift */; };
+		953D843E202E744E001E4FD7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953D843C202E744E001E4FD7 /* Constants.swift */; };
+		953D8441202FD174001E4FD7 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953D843F202FD174001E4FD7 /* Player.swift */; };
+		953D8442202FD174001E4FD7 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953D843F202FD174001E4FD7 /* Player.swift */; };
+		953D8443202FD174001E4FD7 /* Attribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953D8440202FD174001E4FD7 /* Attribute.swift */; };
+		953D8444202FD174001E4FD7 /* Attribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953D8440202FD174001E4FD7 /* Attribute.swift */; };
+		953D84492030A363001E4FD7 /* LogicHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953D84482030A363001E4FD7 /* LogicHelper.swift */; };
+		953D844A2030A363001E4FD7 /* LogicHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953D84482030A363001E4FD7 /* LogicHelper.swift */; };
+		95E52AD320361E9300A66B92 /* GlobalState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E52AD220361E9300A66B92 /* GlobalState.swift */; };
+		95E52AD420361E9300A66B92 /* GlobalState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E52AD220361E9300A66B92 /* GlobalState.swift */; };
+		95E52AD7203624AF00A66B92 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E52AD6203624AF00A66B92 /* RegistrationViewController.swift */; };
+		95E52AD8203624AF00A66B92 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E52AD6203624AF00A66B92 /* RegistrationViewController.swift */; };
 		95E802882023F9460075FEEE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E802872023F9460075FEEE /* AppDelegate.swift */; };
-		95E8028A2023F9460075FEEE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E802892023F9460075FEEE /* ViewController.swift */; };
+		95E8028A2023F9460075FEEE /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E802892023F9460075FEEE /* LoginViewController.swift */; };
 		95E8028D2023F9460075FEEE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95E8028B2023F9460075FEEE /* Main.storyboard */; };
 		95E8028F2023F9460075FEEE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 95E8028E2023F9460075FEEE /* Assets.xcassets */; };
 		95E802922023F9460075FEEE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95E802902023F9460075FEEE /* LaunchScreen.storyboard */; };
 		95E8029D2023F9460075FEEE /* GotchaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E8029C2023F9460075FEEE /* GotchaTests.swift */; };
+		C296414746A1DA7B0CB304C9 /* Pods_Gotcha.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F08FD81B7F6BFA4818D3C622 /* Pods_Gotcha.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -26,9 +42,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3D38CD69D36DBBEFF2BD74D6 /* Pods-Gotcha.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gotcha.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Gotcha/Pods-Gotcha.debug.xcconfig"; sourceTree = "<group>"; };
+		56BC6F43DDB31ED6276CE170 /* Pods-GotchaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GotchaTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-GotchaTests/Pods-GotchaTests.release.xcconfig"; sourceTree = "<group>"; };
+		953D8439202E70CA001E4FD7 /* RestAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestAPIManager.swift; sourceTree = "<group>"; };
+		953D843C202E744E001E4FD7 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		953D843F202FD174001E4FD7 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		953D8440202FD174001E4FD7 /* Attribute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Attribute.swift; sourceTree = "<group>"; };
+		953D84482030A363001E4FD7 /* LogicHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogicHelper.swift; sourceTree = "<group>"; };
+		95E52AD220361E9300A66B92 /* GlobalState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalState.swift; sourceTree = "<group>"; };
+		95E52AD6203624AF00A66B92 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		95E802842023F9460075FEEE /* Gotcha.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gotcha.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		95E802872023F9460075FEEE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		95E802892023F9460075FEEE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		95E802892023F9460075FEEE /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		95E8028C2023F9460075FEEE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		95E8028E2023F9460075FEEE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		95E802912023F9460075FEEE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -36,6 +61,10 @@
 		95E802982023F9460075FEEE /* GotchaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GotchaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		95E8029C2023F9460075FEEE /* GotchaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GotchaTests.swift; sourceTree = "<group>"; };
 		95E8029E2023F9460075FEEE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BAB6B31B0027314FFAB69842 /* Pods-GotchaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GotchaTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GotchaTests/Pods-GotchaTests.debug.xcconfig"; sourceTree = "<group>"; };
+		E92D5A7043FBCD91DF11FD31 /* Pods_GotchaTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GotchaTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F08FD81B7F6BFA4818D3C622 /* Pods_Gotcha.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Gotcha.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F93E83A96F43ED8B1FF71208 /* Pods-Gotcha.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gotcha.release.xcconfig"; path = "Pods/Target Support Files/Pods-Gotcha/Pods-Gotcha.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C296414746A1DA7B0CB304C9 /* Pods_Gotcha.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -50,18 +80,75 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7CE939975595D2EF2F21AD09 /* Pods_GotchaTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		17509C1657D2852EAF09B0DA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F08FD81B7F6BFA4818D3C622 /* Pods_Gotcha.framework */,
+				E92D5A7043FBCD91DF11FD31 /* Pods_GotchaTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		95BBB336202E6C9000929182 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				95E52AD52036249900A66B92 /* Authentication */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		95BBB337202E6CA500929182 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				95E8028B2023F9460075FEEE /* Main.storyboard */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		95BBB338202E6CAE00929182 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				953D843F202FD174001E4FD7 /* Player.swift */,
+				953D8440202FD174001E4FD7 /* Attribute.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		95BBB339202E6CBB00929182 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				953D8439202E70CA001E4FD7 /* RestAPIManager.swift */,
+				953D843C202E744E001E4FD7 /* Constants.swift */,
+				953D84482030A363001E4FD7 /* LogicHelper.swift */,
+				95E52AD220361E9300A66B92 /* GlobalState.swift */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		95E52AD52036249900A66B92 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				95E802892023F9460075FEEE /* LoginViewController.swift */,
+				95E52AD6203624AF00A66B92 /* RegistrationViewController.swift */,
+			);
+			name = Authentication;
+			sourceTree = "<group>";
+		};
 		95E8027B2023F9460075FEEE = {
 			isa = PBXGroup;
 			children = (
 				95E802862023F9460075FEEE /* Gotcha */,
 				95E8029B2023F9460075FEEE /* GotchaTests */,
 				95E802852023F9460075FEEE /* Products */,
+				E6C8DA42250723BD702AAF85 /* Pods */,
+				17509C1657D2852EAF09B0DA /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -77,9 +164,11 @@
 		95E802862023F9460075FEEE /* Gotcha */ = {
 			isa = PBXGroup;
 			children = (
+				95BBB338202E6CAE00929182 /* Models */,
+				95BBB337202E6CA500929182 /* Views */,
+				95BBB336202E6C9000929182 /* Controllers */,
+				95BBB339202E6CBB00929182 /* Resources */,
 				95E802872023F9460075FEEE /* AppDelegate.swift */,
-				95E802892023F9460075FEEE /* ViewController.swift */,
-				95E8028B2023F9460075FEEE /* Main.storyboard */,
 				95E8028E2023F9460075FEEE /* Assets.xcassets */,
 				95E802902023F9460075FEEE /* LaunchScreen.storyboard */,
 				95E802932023F9460075FEEE /* Info.plist */,
@@ -96,6 +185,17 @@
 			path = GotchaTests;
 			sourceTree = "<group>";
 		};
+		E6C8DA42250723BD702AAF85 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3D38CD69D36DBBEFF2BD74D6 /* Pods-Gotcha.debug.xcconfig */,
+				F93E83A96F43ED8B1FF71208 /* Pods-Gotcha.release.xcconfig */,
+				BAB6B31B0027314FFAB69842 /* Pods-GotchaTests.debug.xcconfig */,
+				56BC6F43DDB31ED6276CE170 /* Pods-GotchaTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -103,9 +203,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 95E802A12023F9460075FEEE /* Build configuration list for PBXNativeTarget "Gotcha" */;
 			buildPhases = (
+				E8F8197FDD2A1B1C5EE69021 /* [CP] Check Pods Manifest.lock */,
 				95E802802023F9460075FEEE /* Sources */,
 				95E802812023F9460075FEEE /* Frameworks */,
 				95E802822023F9460075FEEE /* Resources */,
+				F299ED2739085083B59C7AA2 /* [CP] Embed Pods Frameworks */,
+				FA39E5E7FCB98EFD77F8379E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -120,9 +223,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 95E802A42023F9460075FEEE /* Build configuration list for PBXNativeTarget "GotchaTests" */;
 			buildPhases = (
+				59DAB1BFE6FDB8205936CD66 /* [CP] Check Pods Manifest.lock */,
 				95E802942023F9460075FEEE /* Sources */,
 				95E802952023F9460075FEEE /* Frameworks */,
 				95E802962023F9460075FEEE /* Resources */,
+				9E16B4C347E6902586DF7AE0 /* [CP] Embed Pods Frameworks */,
+				9D4AD79D5C138442459822FA /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -194,13 +300,113 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		59DAB1BFE6FDB8205936CD66 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		9D4AD79D5C138442459822FA /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GotchaTests/Pods-GotchaTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9E16B4C347E6902586DF7AE0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GotchaTests/Pods-GotchaTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E8F8197FDD2A1B1C5EE69021 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		F299ED2739085083B59C7AA2 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Gotcha/Pods-Gotcha-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FA39E5E7FCB98EFD77F8379E /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Gotcha/Pods-Gotcha-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		95E802802023F9460075FEEE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				95E8028A2023F9460075FEEE /* ViewController.swift in Sources */,
+				95E8028A2023F9460075FEEE /* LoginViewController.swift in Sources */,
+				953D8441202FD174001E4FD7 /* Player.swift in Sources */,
+				953D843A202E70CA001E4FD7 /* RestAPIManager.swift in Sources */,
+				95E52AD7203624AF00A66B92 /* RegistrationViewController.swift in Sources */,
+				953D84492030A363001E4FD7 /* LogicHelper.swift in Sources */,
 				95E802882023F9460075FEEE /* AppDelegate.swift in Sources */,
+				953D8443202FD174001E4FD7 /* Attribute.swift in Sources */,
+				95E52AD320361E9300A66B92 /* GlobalState.swift in Sources */,
+				953D843D202E744E001E4FD7 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -208,7 +414,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				953D843B202E70CA001E4FD7 /* RestAPIManager.swift in Sources */,
 				95E8029D2023F9460075FEEE /* GotchaTests.swift in Sources */,
+				95E52AD8203624AF00A66B92 /* RegistrationViewController.swift in Sources */,
+				953D844A2030A363001E4FD7 /* LogicHelper.swift in Sources */,
+				953D843E202E744E001E4FD7 /* Constants.swift in Sources */,
+				953D8444202FD174001E4FD7 /* Attribute.swift in Sources */,
+				95E52AD420361E9300A66B92 /* GlobalState.swift in Sources */,
+				953D8442202FD174001E4FD7 /* Player.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -351,6 +564,7 @@
 		};
 		95E802A22023F9460075FEEE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3D38CD69D36DBBEFF2BD74D6 /* Pods-Gotcha.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -366,6 +580,7 @@
 		};
 		95E802A32023F9460075FEEE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F93E83A96F43ED8B1FF71208 /* Pods-Gotcha.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -381,6 +596,7 @@
 		};
 		95E802A52023F9460075FEEE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BAB6B31B0027314FFAB69842 /* Pods-GotchaTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -398,6 +614,7 @@
 		};
 		95E802A62023F9460075FEEE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 56BC6F43DDB31ED6276CE170 /* Pods-GotchaTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";

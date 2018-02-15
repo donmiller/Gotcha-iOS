@@ -7,19 +7,27 @@
 //
 
 import UIKit
+import SwiftyJSON
 
-class ViewController: UIViewController {
+class LoginViewController: UIViewController {
 
+    @IBOutlet var txtEmail: UITextField!
+    @IBOutlet var txtPassword: UITextField!
+    @IBOutlet var btnLogin: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+
+        self.hideKeyboardWhenTappedAround()    
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
+    
+    @IBAction func login(_ sender: Any) {
+        self.presentAlert("This is not implemented yet.")
+    }
 }
 

@@ -7,6 +7,8 @@
 //
 
 import XCTest
+import SwiftyJSON
+
 @testable import Gotcha
 
 class GotchaTests: XCTestCase {
@@ -21,9 +23,9 @@ class GotchaTests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testRegisterPlayer() {
+
+
     }
     
     func testPerformanceExample() {
