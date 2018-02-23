@@ -96,6 +96,20 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		953F5D49203F686E0093FE2F /* Player */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Player;
+			sourceTree = "<group>";
+		};
+		953F5D4A203F68790093FE2F /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "New Group";
+			sourceTree = "<group>";
+		};
 		95BBB336202E6C9000929182 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -115,6 +129,8 @@
 		95BBB338202E6CAE00929182 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				953F5D4A203F68790093FE2F /* New Group */,
+				953F5D49203F686E0093FE2F /* Player */,
 				953D843F202FD174001E4FD7 /* Player.swift */,
 				953D8440202FD174001E4FD7 /* Attribute.swift */,
 			);
