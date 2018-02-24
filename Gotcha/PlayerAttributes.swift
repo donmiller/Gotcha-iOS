@@ -8,7 +8,7 @@
 
 import SwiftyJSON
 
-class Attributes {
+class PlayerAttributes {
 
     var api_key : String?
 	var avatar : String?

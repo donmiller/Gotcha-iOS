@@ -22,13 +22,21 @@ class RestAPIManager: NSObject {
             return ["data": ["type": type,
                     "attributes": ["email_address": email_address, "name": name, "password": password]]]
         }
-        //let body = "{\"data\":{\"type\":\"\(type)\",\"attributes\":{\"email_address\":\"\(email_address)\",\"password\":\"\(password)\"}}}"
-        
+
         makeHTTPPostRequest(path: route, body: body, onCompletion: { json, err in
             onCompletion(json as JSON)
         })
     }
         
+    func getArenas(latitude: String, longitude: String, onCompletion: @escaping (JSON) -> Void)
+    {
+        let route = Constants.BaseUrl + "/arenas?latitude=\(latitude)&longitude=\(longitude)"
+        
+        makeHTTPGetRequest(path: route, onCompletion: { json, err in
+            onCompletion(json as JSON)
+        })
+    }
+    
     // MARK: GET AND POST REQUESTS
     private func makeHTTPPostRequest(path: String, body: [String: Any], onCompletion: @escaping ServiceResponse) {
         var request = URLRequest(url: URL(string: path)!)
@@ -69,4 +77,31 @@ class RestAPIManager: NSObject {
             onCompletion(JSON.null, nil)
         }
     }
+    
+    private func makeHTTPGetRequest(path: String, onCompletion: @escaping ServiceResponse) {
+        var request = URLRequest(url: URL(string: path)!)
+        request.httpMethod = "GET"
+        request.addValue("application/vnd.api+json", forHTTPHeaderField: "Content-Type")
+        request.addValue("application/vnd.api+json", forHTTPHeaderField: "Accept")
+        request.setValue("Bearer \(GlobalState.api_token)", forHTTPHeaderField: "Authorization")
+        let session = URLSession.shared
+
+        let task = session.dataTask(with: request, completionHandler: {data, response, error -> Void in
+            
+            do {
+                if let jsonData = data {
+                    let json:JSON = try JSON(data: jsonData)
+                    print(json)
+                    onCompletion(json, nil)
+                } else {
+                    onCompletion(JSON.null, error as NSError?)
+                }
+            } catch let error as NSError {
+                print(error)
+            }
+            
+        })
+        task.resume()
+    }
+
 }

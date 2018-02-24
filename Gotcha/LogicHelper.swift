@@ -214,6 +214,9 @@ extension Int {
         return Date(timeIntervalSince1970: (TimeInterval(self / 1000)))
     }
     
+    var stringValue:String {
+        return "\(self)"
+    }
 }
 
 extension String {
