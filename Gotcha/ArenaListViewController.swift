@@ -9,12 +9,16 @@
 import UIKit
 import SwiftyJSON
 
-class ArenaListViewController: UIViewController {
-
+class ArenaListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    @IBOutlet var tblArenas: UITableView!
     var arenas : [Arena] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.tblArenas.delegate = self
+        self.tblArenas.dataSource = self
 
         getArenas()
     }
@@ -33,9 +37,36 @@ class ArenaListViewController: UIViewController {
                 self.arenas.append(Arena(json: item))
             }
             
-            print(self.arenas)
-
+            DispatchQueue.main.async {
+                self.tblArenas.reloadData()
+            }
         })
+    }
+    
+    //MARK: Table Info
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.arenas.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+
+        let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "arena", for: indexPath)
+        let arenaAttributes = self.arenas[indexPath.row].attributes
+
+        let locationName = cell.contentView.viewWithTag(10) as! UILabel
+        locationName.text = arenaAttributes?.location_name
+        
+        let address1 = cell.contentView.viewWithTag(20) as! UILabel
+        address1.text = arenaAttributes?.street_address1
+        
+        let cityStateZip = cell.contentView.viewWithTag(30) as! UILabel
+        cityStateZip.text = arenaAttributes?.city!
+        cityStateZip.text?.append(", ")
+        cityStateZip.text?.append((arenaAttributes?.state)!)
+        cityStateZip.text?.append(" ")
+        cityStateZip.text?.append((arenaAttributes?.zip_code?.stringValue)!)
+        
+        return cell
     }
     
 }
