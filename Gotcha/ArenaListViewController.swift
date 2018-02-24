@@ -8,11 +8,15 @@
 
 import UIKit
 import SwiftyJSON
+import CoreLocation
 
-class ArenaListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ArenaListViewController: UIViewController, CLLocationManagerDelegate, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet var tblArenas: UITableView!
-    var arenas : [Arena] = []
+    var _arenas : [Arena] = []
+    let _locationManager = CLLocationManager()
+    var _longitude : CLLocationDegrees = 0.0
+    var _latitude : CLLocationDegrees = 0.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,7 +24,7 @@ class ArenaListViewController: UIViewController, UITableViewDelegate, UITableVie
         self.tblArenas.delegate = self
         self.tblArenas.dataSource = self
 
-        getArenas()
+        getCurrentLocation()
     }
 
     override func didReceiveMemoryWarning() {
@@ -29,12 +33,13 @@ class ArenaListViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func getArenas() {
-        
-        RestAPIManager.sharedInstance.getArenas(latitude: "39.7799642", longitude: "-86.272832", onCompletion: { (json: JSON) in
+        // "39.7799642, -86.272832"
+        RestAPIManager.sharedInstance.getArenas(latitude: String(_latitude), longitude: String(_longitude), onCompletion: { (json: JSON) in
             
+            self._arenas = []
             for item in json["data"].arrayValue
             {
-                self.arenas.append(Arena(json: item))
+                self._arenas.append(Arena(json: item))
             }
             
             DispatchQueue.main.async {
@@ -43,15 +48,38 @@ class ArenaListViewController: UIViewController, UITableViewDelegate, UITableVie
         })
     }
     
+    //MARK: Geolocation
+    func getCurrentLocation() {
+        self._locationManager.requestWhenInUseAuthorization()
+        
+        if CLLocationManager.locationServicesEnabled() {
+            _locationManager.delegate = self
+            _locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            _locationManager.startUpdatingLocation()
+        }
+        
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let locValue:CLLocationCoordinate2D = manager.location!.coordinate
+        _longitude = locValue.longitude
+        _latitude = locValue.latitude
+        _locationManager.stopUpdatingLocation()
+        
+        DispatchQueue.main.async {
+            self.getArenas()
+        }
+    }
+    
     //MARK: Table Info
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.arenas.count
+        return self._arenas.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "arena", for: indexPath)
-        let arenaAttributes = self.arenas[indexPath.row].attributes
+        let arenaAttributes = self._arenas[indexPath.row].attributes
 
         let locationName = cell.contentView.viewWithTag(10) as! UILabel
         locationName.text = arenaAttributes?.location_name

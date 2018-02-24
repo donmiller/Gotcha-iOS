@@ -30,7 +30,6 @@ class RestAPIManager: NSObject {
         
     func getArenas(latitude: String, longitude: String, onCompletion: @escaping (JSON) -> Void)
     {
-        //TODO: Get coordiates
         let route = Constants.BaseUrl + "/arenas?latitude=\(latitude)&longitude=\(longitude)"
         
         makeHTTPGetRequest(path: route, onCompletion: { json, err in
