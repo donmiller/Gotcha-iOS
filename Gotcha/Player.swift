@@ -11,17 +11,17 @@ import SwiftyJSON
 class Player {
 	var id : Int?
 	var type : String?
-	var attributes : Attributes?
+	var attributes : PlayerAttributes?
 
 	required init(json: JSON) {
 		id = json["id"].intValue
 		type = json["type"].stringValue
         if (json["attributes"] != JSON.null) {
-            attributes = Attributes(json: json["attributes"])
+            attributes = PlayerAttributes(json: json["attributes"])
         }
 	}
     
-    required init(id: Int?, type: String?, attributes : Attributes?) {
+    required init(id: Int?, type: String?, attributes : PlayerAttributes?) {
         self.id = id
         self.type = type
         self.attributes = attributes
