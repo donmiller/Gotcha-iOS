@@ -11,8 +11,9 @@ import UIKit
 class Constants {
 
     static var BaseUrl : String = "http://staging.gotcha.run/api"
+    static var CloudCredentialsSuiteName : String = "group.com.GroundSpeed.gotcha.credentials"
     
-    static var playerType : String = "player"
+    static var PlayerType : String = "player"
     static var ClientId : String = "brilliant"
     static var ClientSecret : String = "fantastic"
 
