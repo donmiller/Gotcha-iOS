@@ -31,7 +31,7 @@ class ArenaListViewController: UIViewController, CLLocationManagerDelegate, UITa
         
         self.tblArenas.delegate = self
         self.tblArenas.dataSource = self
-
+        registerDevice()
         getCurrentLocation()
         self.tblArenas.addSubview(self.refreshControl)
     }
@@ -127,6 +127,15 @@ class ArenaListViewController: UIViewController, CLLocationManagerDelegate, UITa
         cityStateZip.text?.append((arenaAttributes?.zip_code?.stringValue)!)
         
         return cell
+    }
+    
+    //MARK: Register Device
+    func registerDevice() {
+        RestAPIManager.sharedInstance.registerDevice(deviceToken: GlobalState.deviceToken, onCompletion: { (json: JSON) in
+            print(json)
+            
+        })
+
     }
     
 }

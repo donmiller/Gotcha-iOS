@@ -7,16 +7,41 @@
 //
 
 import UIKit
+import UserNotifications
+import SwiftyJSON
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+
+        registerForPushNotifications()
+        application.registerForRemoteNotifications()
+        
         return true
+    }
+    
+    func registerForPushNotifications() {
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) {
+            (granted, error) in
+            print("Permission granted: \(granted)")
+        }
+    }
+    
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+
+        LogicHelper.saveDeviceToCloud("\(deviceToken.toHexString())")
+        GlobalState.deviceToken = deviceToken.toHexString()
+                
+        print("Got token data! \(deviceToken.toHexString())")
+    }
+    
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        
+        print("No notifications in simulator. \(error)")
+        
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
