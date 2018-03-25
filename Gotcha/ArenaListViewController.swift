@@ -15,8 +15,16 @@ class ArenaListViewController: UIViewController, CLLocationManagerDelegate, UITa
     @IBOutlet var tblArenas: UITableView!
     var _arenas : [Arena] = []
     let _locationManager = CLLocationManager()
-    var _longitude : CLLocationDegrees = 0.0
-    var _latitude : CLLocationDegrees = 0.0
+    var _longitude : CLLocationDegrees = 0.00
+    var _latitude : CLLocationDegrees = 0.00
+    
+    lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action:
+            #selector(ArenaListViewController.getArenas), for: UIControlEvents.valueChanged)
+        
+        return refreshControl
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +33,11 @@ class ArenaListViewController: UIViewController, CLLocationManagerDelegate, UITa
         self.tblArenas.dataSource = self
 
         getCurrentLocation()
+        self.tblArenas.addSubview(self.refreshControl)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        getArenas()
     }
 
     override func didReceiveMemoryWarning() {
@@ -32,8 +45,10 @@ class ArenaListViewController: UIViewController, CLLocationManagerDelegate, UITa
         // Dispose of any resources that can be recreated.
     }
     
-    func getArenas() {
+    @objc func getArenas() {
         // "39.7799642, -86.272832"
+        print(String(_latitude))
+        print(String(_longitude))
         RestAPIManager.sharedInstance.getArenas(latitude: String(_latitude), longitude: String(_longitude), onCompletion: { (json: JSON) in
             
             self._arenas = []
@@ -41,23 +56,40 @@ class ArenaListViewController: UIViewController, CLLocationManagerDelegate, UITa
             {
                 self._arenas.append(Arena(json: item))
             }
-            
+
             DispatchQueue.main.async {
                 self.tblArenas.reloadData()
+                self.refreshControl.endRefreshing()
             }
         })
     }
     
     //MARK: Geolocation
     func getCurrentLocation() {
-        self._locationManager.requestWhenInUseAuthorization()
+        self._locationManager.requestAlwaysAuthorization()
         
         if CLLocationManager.locationServicesEnabled() {
-            _locationManager.delegate = self
-            _locationManager.desiredAccuracy = kCLLocationAccuracyBest
-            _locationManager.startUpdatingLocation()
+            self._locationManager.delegate = self
+            self._locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            self._locationManager.requestWhenInUseAuthorization()
+            self._locationManager.startUpdatingLocation()
+        } else {
+            checkForLocationServices()
         }
-        
+    }
+    
+    @objc func checkForLocationServices() {
+        if CLLocationManager.locationServicesEnabled() {
+            switch(CLLocationManager.authorizationStatus()) {
+            case .notDetermined, .restricted, .denied:
+                self.presentAlert("Location Restricted", message: "Location Services are restricted. Please enable in Settings to see current temperature.")
+            case .authorizedAlways, .authorizedWhenInUse:
+                print("Location Access")
+            }
+        } else {
+            print("Location services are not enabled")
+            self.presentAlert("Location Services Disabled", message: "Location Services are not enabled. Please enable in Settings to see current temperature.")
+        }
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {

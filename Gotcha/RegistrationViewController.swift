@@ -29,7 +29,7 @@ class RegistrationViewController: UIViewController {
     
     @IBAction func registerPlayer(_ sender: Any) {
 
-        RestAPIManager.sharedInstance.register(name: txtName.text!, email_address: txtEmail.text!, password: txtPassword.text!, type: Constants.playerType, onCompletion: { (json: JSON) in
+        RestAPIManager.sharedInstance.register(name: txtName.text!, email_address: txtEmail.text!, password: txtPassword.text!, type: Constants.PlayerType, onCompletion: { (json: JSON) in
             
             //TODO: Add validation error handling
             
