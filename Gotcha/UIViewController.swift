@@ -20,9 +20,9 @@ extension UIViewController {
         view.endEditing(true)
     }
     
-    func presentAlert(_ message: String) {
+    func presentAlert(_ title: String, message: String) {
         let alert = UIAlertController(
-            title: "Alert",
+            title: title,
             message: message,
             preferredStyle: .alert
         )

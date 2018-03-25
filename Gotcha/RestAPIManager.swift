@@ -27,7 +27,19 @@ class RestAPIManager: NSObject {
             onCompletion(json as JSON)
         })
     }
+    
+    func login(email_address: String, password: String, onCompletion: @escaping (JSON) -> Void)
+    {
+        let route = Constants.BaseUrl + "/sessions"
+        var body: [String: Any] {
+            return ["data": ["attributes": ["email_address": email_address, "password": password]]]
+        }
         
+        makeHTTPPostRequest(path: route, body: body, onCompletion: { json, err in
+            onCompletion(json as JSON)
+        })
+    }
+    
     func getArenas(latitude: String, longitude: String, onCompletion: @escaping (JSON) -> Void)
     {
         let route = Constants.BaseUrl + "/arenas?latitude=\(latitude)&longitude=\(longitude)"
@@ -40,19 +52,12 @@ class RestAPIManager: NSObject {
     // MARK: GET AND POST REQUESTS
     private func makeHTTPPostRequest(path: String, body: [String: Any], onCompletion: @escaping ServiceResponse) {
         var request = URLRequest(url: URL(string: path)!)
-        // Set the method to POST
         request.httpMethod = "POST"
         
         do {
-            //TODO: Remove these if Jamie doesn't implement Basic Auth
-            //let loginString = String(format: "%@:%@", Constants.ClientId, Constants.ClientSecret)
-            //let loginData = loginString.data(using: String.Encoding.utf8)!
-            //let base64LoginString = loginData.base64EncodedString()
-            
             let jsonBody = try JSONSerialization.data(withJSONObject: body, options: .prettyPrinted)
-            // Set the POST body for the request
+
             request.addValue("application/vnd.api+json", forHTTPHeaderField: "Content-Type")
-            //request.setValue("Basic \(base64LoginString)", forHTTPHeaderField: "Authorization")
             request.httpBody = jsonBody
             let session = URLSession.shared
             
@@ -73,7 +78,6 @@ class RestAPIManager: NSObject {
             })
             task.resume()
         } catch {
-            // Create your personal error
             onCompletion(JSON.null, nil)
         }
     }

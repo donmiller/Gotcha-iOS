@@ -10,8 +10,8 @@ import UIKit
 
 class Constants {
 
-    static var BaseUrl : String = "http://staging.gotcha.run/api"
-    //static var BaseUrl : String = "http://localhost:3000/api"
+    //static var BaseUrl : String = "http://staging.gotcha.run/api"
+    static var BaseUrl : String = "http://localhost:3000/api"
     static var CloudCredentialsSuiteName : String = "group.com.GroundSpeed.gotcha.credentials"
     
     static var PlayerType : String = "player"

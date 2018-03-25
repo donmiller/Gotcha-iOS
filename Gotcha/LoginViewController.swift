@@ -27,7 +27,36 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func login(_ sender: Any) {
-        self.presentAlert("This is not implemented yet.")
+
+        RestAPIManager.sharedInstance.login(email_address: txtEmail.text!, password: txtPassword.text!, onCompletion: { (json: JSON) in
+            
+            let player : Player? = Player(json: json["data"])
+
+            if (player?.attributes?.api_key != nil) {
+                GlobalState.AuthenticatedUser = true
+                GlobalState.api_token = (player?.attributes?.api_key)!
+                GlobalState.Player = player!
+
+                self.performSegue(withIdentifier: "authenticated", sender: nil)
+            } else if json["errors"].count > 0 {
+                var errorOut : String = ""
+                
+                for index in 0...json["errors"].count-1 {
+                    errorOut.append(json["errors"][index].description)
+                    errorOut.append("\n")
+                }
+                self.presentAlert("Invalid", message: errorOut)
+                
+            } else {
+                self.presentAlert("Error", message: "Server error")
+            }
+
+        })
+        
+    }
+    
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        return !GlobalState.api_token.isEmpty
     }
 }
 
