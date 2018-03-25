@@ -23,7 +23,7 @@ class RestAPIManager: NSObject {
                     "attributes": ["email_address": email_address, "name": name, "password": password]]]
         }
 
-        makeHTTPPostRequest(path: route, body: body, onCompletion: { json, err in
+        makeHTTPPostRequest(path: route, body: body, authRequired: false, onCompletion: { json, err in
             onCompletion(json as JSON)
         })
     }
@@ -35,7 +35,7 @@ class RestAPIManager: NSObject {
             return ["data": ["attributes": ["email_address": email_address, "password": password]]]
         }
         
-        makeHTTPPostRequest(path: route, body: body, onCompletion: { json, err in
+        makeHTTPPostRequest(path: route, body: body, authRequired: false, onCompletion: { json, err in
             onCompletion(json as JSON)
         })
     }
@@ -49,8 +49,20 @@ class RestAPIManager: NSObject {
         })
     }
     
+    func registerDevice(deviceToken: String, onCompletion: @escaping (JSON) -> Void)
+    {
+        let route = Constants.BaseUrl + "/devices"
+        var body: [String: Any] {
+            return ["data": ["attributes": ["token": deviceToken]]]
+        }
+        
+        makeHTTPPostRequest(path: route, body: body, authRequired: true, onCompletion: { json, err in
+            onCompletion(json as JSON)
+        })
+    }
+    
     // MARK: GET AND POST REQUESTS
-    private func makeHTTPPostRequest(path: String, body: [String: Any], onCompletion: @escaping ServiceResponse) {
+    private func makeHTTPPostRequest(path: String, body: [String: Any], authRequired: Bool, onCompletion: @escaping ServiceResponse) {
         var request = URLRequest(url: URL(string: path)!)
         request.httpMethod = "POST"
         
@@ -58,6 +70,9 @@ class RestAPIManager: NSObject {
             let jsonBody = try JSONSerialization.data(withJSONObject: body, options: .prettyPrinted)
 
             request.addValue("application/vnd.api+json", forHTTPHeaderField: "Content-Type")
+            if authRequired {
+                request.addValue(GlobalState.api_token, forHTTPHeaderField: "Authorization")
+            }
             request.httpBody = jsonBody
             let session = URLSession.shared
             

@@ -53,6 +53,20 @@ class LogicHelper {
         return authToken
     }
     
+    static func saveDeviceToCloud(_ authToken: String) {
+        let defaults = UserDefaults(suiteName: Constants.CloudCredentialsSuiteName)
+        defaults!.set(authToken, forKey: "DeviceToken")
+        defaults?.synchronize()
+    }
+    
+    static func fetchDeviceFromCloud() -> String {
+        let defaults = UserDefaults(suiteName: Constants.CloudCredentialsSuiteName)
+        defaults?.synchronize()
+        let deviceToken = defaults!.string(forKey: "DeviceToken") ?? ""
+        
+        return deviceToken
+    }
+
     static func nullToNil(_ value : AnyObject?) -> AnyObject? {
         if value is NSNull {
             return "" as AnyObject?
