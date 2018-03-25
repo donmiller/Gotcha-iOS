@@ -37,7 +37,10 @@ class LoginViewController: UIViewController {
                 GlobalState.api_token = (player?.attributes?.api_key)!
                 GlobalState.Player = player!
 
-                self.performSegue(withIdentifier: "authenticated", sender: nil)
+                DispatchQueue.main.async {
+                    self.performSegue(withIdentifier: "authenticated", sender: nil)
+                }
+                
             } else if json["errors"].count > 0 {
                 var errorOut : String = ""
                 
