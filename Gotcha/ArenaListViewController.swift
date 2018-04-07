@@ -126,10 +126,42 @@ class ArenaListViewController: UIViewController, CLLocationManagerDelegate, UITa
         cityStateZip.text?.append(" ")
         cityStateZip.text?.append((arenaAttributes?.zip_code?.stringValue)!)
         
+        let enterArena = cell.contentView.viewWithTag(40) as! UIButton
+        enterArena.setTitle("Enter Arena", for: .normal)
+        enterArena.rounded(color: UIColor.gotchaGreenRedColor)
+        
+        
         return cell
     }
     
-    //MARK: Register Device
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let arenaAttributes = self._arenas[indexPath.row].attributes
+        enterArena(arena: self._arenas[indexPath.row].id!)
+        _ = shouldPerformSegue(withIdentifier: "enterArena", sender: true)
+        performSegue(withIdentifier: "enterArena", sender: arenaAttributes)
+    }
+
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        if let perform = sender as? Bool {
+            return perform
+        } else {
+            return false
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let arena = sender as? ArenaAttributes,
+            let destVC = segue.destination as? ArenaViewController {
+            destVC.arena = arena
+        }
+    }
+    
+    func enterArena(arena: Int) {
+        RestAPIManager.sharedInstance.enterArena(arena: arena, onCompletion: { (json: JSON) in
+            print(json)
+        })
+    }
+    
     func registerDevice() {
         RestAPIManager.sharedInstance.registerDevice(deviceToken: GlobalState.deviceToken, onCompletion: { (json: JSON) in
             print(json)

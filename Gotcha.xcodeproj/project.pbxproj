@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7CE939975595D2EF2F21AD09 /* Pods_GotchaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E92D5A7043FBCD91DF11FD31 /* Pods_GotchaTests.framework */; };
+		953A838D20794E26008E3994 /* ArenaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953A838C20794E26008E3994 /* ArenaViewController.swift */; };
 		953D843A202E70CA001E4FD7 /* RestAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953D8439202E70CA001E4FD7 /* RestAPIManager.swift */; };
 		953D843B202E70CA001E4FD7 /* RestAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953D8439202E70CA001E4FD7 /* RestAPIManager.swift */; };
 		953D843D202E744E001E4FD7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953D843C202E744E001E4FD7 /* Constants.swift */; };
@@ -62,6 +63,7 @@
 /* Begin PBXFileReference section */
 		3D38CD69D36DBBEFF2BD74D6 /* Pods-Gotcha.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gotcha.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Gotcha/Pods-Gotcha.debug.xcconfig"; sourceTree = "<group>"; };
 		56BC6F43DDB31ED6276CE170 /* Pods-GotchaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GotchaTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-GotchaTests/Pods-GotchaTests.release.xcconfig"; sourceTree = "<group>"; };
+		953A838C20794E26008E3994 /* ArenaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArenaViewController.swift; sourceTree = "<group>"; };
 		953D8439202E70CA001E4FD7 /* RestAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestAPIManager.swift; sourceTree = "<group>"; };
 		953D843C202E744E001E4FD7 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		953D843F202FD174001E4FD7 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
@@ -154,6 +156,7 @@
 			isa = PBXGroup;
 			children = (
 				954D8EBC2041F2C800A0DE0F /* ArenaListViewController.swift */,
+				953A838C20794E26008E3994 /* ArenaViewController.swift */,
 			);
 			name = Arena;
 			sourceTree = "<group>";
@@ -492,6 +495,7 @@
 				95ABFF502051C39F00C3F032 /* UIApplication.swift in Sources */,
 				95ABFF532051C3D700C3F032 /* UIColor.swift in Sources */,
 				95E8028A2023F9460075FEEE /* LoginViewController.swift in Sources */,
+				953A838D20794E26008E3994 /* ArenaViewController.swift in Sources */,
 				95ABFF572051C43B00C3F032 /* UIButton.swift in Sources */,
 				954D8EB92041EFBD00A0DE0F /* Arena.swift in Sources */,
 				954D8EBD2041F2C800A0DE0F /* ArenaListViewController.swift in Sources */,
