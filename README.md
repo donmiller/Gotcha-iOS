@@ -29,7 +29,7 @@ The API endpoints documentation can be found on the [live docs](http://staging.g
 
 ## CONTRIBUTING
 
-1. Clone the repository `git clone https://github.com/jwright/gotcha-api`
+1. Clone the repository `git clone https://github.com/donmiller/gotcha-ios`
 1. Create a feature branch `git checkout -b my-awesome-feature`
 1. Codez!
 1. Commit your changes (small commits please)
