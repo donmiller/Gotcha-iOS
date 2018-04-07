@@ -20,11 +20,12 @@ class RegistrationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
+        makePretty()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func makePretty() {
+        btnRegister.rounded(color: UIColor.gotchaGreenRedColor)
+        btnCancel.rounded(color: UIColor.gotchaGreenRedColor)
     }
     
     @IBAction func registerPlayer(_ sender: Any) {

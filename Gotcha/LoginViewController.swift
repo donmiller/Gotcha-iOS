@@ -18,12 +18,12 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.hideKeyboardWhenTappedAround()    
+        self.hideKeyboardWhenTappedAround()
+        makePretty()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func makePretty() {
+        btnLogin.rounded(color: UIColor.gotchaGreenRedColor)
     }
     
     @IBAction func login(_ sender: Any) {
@@ -59,7 +59,14 @@ class LoginViewController: UIViewController {
     }
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
-        return !GlobalState.api_token.isEmpty
+        if identifier == "register" {
+            return true
+        } else if identifier == "authenticated" {
+            return !GlobalState.api_token.isEmpty
+        } else {
+            return false
+        }
+        
     }
 }
 
