@@ -136,6 +136,7 @@ class ArenaListViewController: UIViewController, CLLocationManagerDelegate, UITa
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let arenaAttributes = self._arenas[indexPath.row].attributes
+        enterArena(arena: self._arenas[indexPath.row].id!)
         _ = shouldPerformSegue(withIdentifier: "enterArena", sender: true)
         performSegue(withIdentifier: "enterArena", sender: arenaAttributes)
     }
@@ -155,7 +156,12 @@ class ArenaListViewController: UIViewController, CLLocationManagerDelegate, UITa
         }
     }
     
-    //MARK: Register Device
+    func enterArena(arena: Int) {
+        RestAPIManager.sharedInstance.enterArena(arena: arena, onCompletion: { (json: JSON) in
+            print(json)
+        })
+    }
+    
     func registerDevice() {
         RestAPIManager.sharedInstance.registerDevice(deviceToken: GlobalState.deviceToken, onCompletion: { (json: JSON) in
             print(json)

@@ -48,6 +48,15 @@ class RestAPIManager: NSObject {
             onCompletion(json as JSON)
         })
     }
+
+    func enterArena(arena: Int, onCompletion: @escaping (JSON) -> Void)
+    {
+        let route = Constants.BaseUrl + "/arenas/\(arena)/play"
+        
+        makeHTTPPostRequest(path: route, body: [:], authRequired: true, onCompletion: { json, err in
+            onCompletion(json as JSON)
+        })
+    }
     
     func registerDevice(deviceToken: String, onCompletion: @escaping (JSON) -> Void)
     {
@@ -67,12 +76,11 @@ class RestAPIManager: NSObject {
         request.httpMethod = "POST"
         
         do {
-            let jsonBody = try JSONSerialization.data(withJSONObject: body, options: .prettyPrinted)
-
             request.addValue("application/vnd.api+json", forHTTPHeaderField: "Content-Type")
             if authRequired {
                 request.addValue(GlobalState.api_token, forHTTPHeaderField: "Authorization")
             }
+            let jsonBody = try JSONSerialization.data(withJSONObject: body, options: .prettyPrinted)
             request.httpBody = jsonBody
             let session = URLSession.shared
             
