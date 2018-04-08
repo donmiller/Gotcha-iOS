@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class ArenaViewController: UIViewController {
 
@@ -20,12 +21,23 @@ class ArenaViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        lblArenaName.text = arena?.location_name!
+        lblArenaName.text = arena?.locationName!
         makePretty()
     }
     
     func makePretty() {
         btnNext.rounded(color: UIColor.gotchaGreenRedColor)
         btnCapture.rounded(color: UIColor.gotchaGreenRedColor)
-    }    
+    }
+    
+    @IBAction func leaveArena() {
+        RestAPIManager.sharedInstance.leaveArena(arena: (GlobalState.Arena?.id)!, onCompletion: { (json: JSON) in
+            
+            print(json)
+            GlobalState.Arena = nil
+            DispatchQueue.main.async {
+                self.dismiss(animated: true, completion: nil)
+            }
+        })
+    }
 }

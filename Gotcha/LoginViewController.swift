@@ -23,7 +23,7 @@ class LoginViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        if GlobalState.Player?.attributes?.api_key != nil {
+        if GlobalState.Player?.attributes?.apiKey != nil {
             self.performSegue(withIdentifier: "authenticated", sender: nil)
         }
     }
@@ -41,7 +41,7 @@ class LoginViewController: UIViewController {
             
             let player : Player? = Player(json: json["data"])
             
-            if (player?.attributes?.api_key != nil) {
+            if (player?.attributes?.apiKey != nil) {
                 GlobalState.AuthenticatedUser = true
                 GlobalState.Player = player!
                 
@@ -69,7 +69,7 @@ class LoginViewController: UIViewController {
         if identifier == "register" {
             return true
         } else if identifier == "authenticated" {
-            return GlobalState.Player?.attributes?.api_key! != nil
+            return GlobalState.Player?.attributes?.apiKey! != nil
         } else {
             return false
         }
