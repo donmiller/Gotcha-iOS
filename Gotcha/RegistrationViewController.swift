@@ -97,14 +97,9 @@ class RegistrationViewController: UIViewController, UIImagePickerControllerDeleg
     //MARK: ImagePicker
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         
-        if let asset = info[UIImagePickerControllerPHAsset] as? PHAsset {
-            if let filename = (asset.value(forKey: "filename")) as? String {
-                if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
-                    imgAvatar.contentMode = .scaleAspectFit
-                    imgAvatar.image = pickedImage
-                    imgAvatar.restorationIdentifier = filename
-                }
-            }
+        if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            imgAvatar.contentMode = .scaleAspectFit
+            imgAvatar.image = pickedImage
         }
 
         picker.dismiss(animated: true, completion: nil)
