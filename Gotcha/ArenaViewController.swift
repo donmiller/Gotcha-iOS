@@ -33,7 +33,6 @@ class ArenaViewController: UIViewController {
     @IBAction func leaveArena() {
         RestAPIManager.sharedInstance.leaveArena(arena: (GlobalState.Arena?.id)!, onCompletion: { (json: JSON) in
             
-            print(json)
             GlobalState.Arena = nil
             DispatchQueue.main.async {
                 self.dismiss(animated: true, completion: nil)
