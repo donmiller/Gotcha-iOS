@@ -86,6 +86,7 @@ class RestAPIManager: NSObject {
         
         do {
             request.addValue("application/vnd.api+json", forHTTPHeaderField: "Content-Type")
+            request.addValue("application/vnd.api+json", forHTTPHeaderField: "Accept")
             if authRequired {
                 request.addValue((GlobalState.Player?.attributes?.apiKey)!, forHTTPHeaderField: "Authorization")
             }
@@ -95,16 +96,22 @@ class RestAPIManager: NSObject {
             
             let task = session.dataTask(with: request, completionHandler: {data, response, error -> Void in
 
-                do {
-                    if let jsonData = data {
-                        let json:JSON = try JSON(data: jsonData)
-                        print(json)
-                        onCompletion(json, nil)
+                if let httpResponse = response as? HTTPURLResponse {
+                    if httpResponse.statusCode == 204 { //No Content 
+                        onCompletion(JSON.null, nil)
                     } else {
-                        onCompletion(JSON.null, error as NSError?)
+                        do {
+                            if let jsonData = data {
+                                let json:JSON = try JSON(data: jsonData)
+                                print(json)
+                                onCompletion(json, nil)
+                            } else {
+                                onCompletion(JSON.null, error as NSError?)
+                            }
+                        } catch let error as NSError {
+                            print(error)
+                        }
                     }
-                } catch let error as NSError {
-                    print(error)
                 }
                 
             })
