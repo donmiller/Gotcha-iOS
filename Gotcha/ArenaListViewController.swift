@@ -66,7 +66,7 @@ class ArenaListViewController: UIViewController, CLLocationManagerDelegate, UITa
     
     //MARK: Geolocation
     func getCurrentLocation() {
-        self._locationManager.requestAlwaysAuthorization()
+        self._locationManager.requestWhenInUseAuthorization()
         
         if CLLocationManager.locationServicesEnabled() {
             self._locationManager.delegate = self
@@ -114,17 +114,17 @@ class ArenaListViewController: UIViewController, CLLocationManagerDelegate, UITa
         let arenaAttributes = self._arenas[indexPath.row].attributes
 
         let locationName = cell.contentView.viewWithTag(10) as! UILabel
-        locationName.text = arenaAttributes?.location_name
+        locationName.text = arenaAttributes?.locationName
         
         let address1 = cell.contentView.viewWithTag(20) as! UILabel
-        address1.text = arenaAttributes?.street_address1
+        address1.text = arenaAttributes?.streetAddress1
         
         let cityStateZip = cell.contentView.viewWithTag(30) as! UILabel
         cityStateZip.text = arenaAttributes?.city!
         cityStateZip.text?.append(", ")
         cityStateZip.text?.append((arenaAttributes?.state)!)
         cityStateZip.text?.append(" ")
-        cityStateZip.text?.append((arenaAttributes?.zip_code?.stringValue)!)
+        cityStateZip.text?.append((arenaAttributes?.zipCode?.stringValue)!)
         
         let enterArena = cell.contentView.viewWithTag(40) as! UIButton
         enterArena.setTitle("Enter Arena", for: .normal)
@@ -159,6 +159,7 @@ class ArenaListViewController: UIViewController, CLLocationManagerDelegate, UITa
     func enterArena(arena: Int) {
         RestAPIManager.sharedInstance.enterArena(arena: arena, onCompletion: { (json: JSON) in
             print(json)
+            GlobalState.Arena = Arena(json: json["data"])
         })
     }
     

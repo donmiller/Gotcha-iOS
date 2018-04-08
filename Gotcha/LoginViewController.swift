@@ -21,22 +21,30 @@ class LoginViewController: UIViewController {
         self.hideKeyboardWhenTappedAround()
         makePretty()
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if GlobalState.Player?.attributes?.apiKey != nil {
+            self.performSegue(withIdentifier: "authenticated", sender: nil)
+        }
+    }
 
     func makePretty() {
         btnLogin.rounded(color: UIColor.gotchaGreenRedColor)
     }
     
     @IBAction func login(_ sender: Any) {
-
+        loginPlayer()    
+    }
+    
+    func loginPlayer() {
         RestAPIManager.sharedInstance.login(email_address: txtEmail.text!, password: txtPassword.text!, onCompletion: { (json: JSON) in
             
             let player : Player? = Player(json: json["data"])
-
-            if (player?.attributes?.api_key != nil) {
+            
+            if (player?.attributes?.apiKey != nil) {
                 GlobalState.AuthenticatedUser = true
-                GlobalState.api_token = (player?.attributes?.api_key)!
                 GlobalState.Player = player!
-
+                
                 DispatchQueue.main.async {
                     self.performSegue(withIdentifier: "authenticated", sender: nil)
                 }
@@ -53,16 +61,15 @@ class LoginViewController: UIViewController {
             } else {
                 self.presentAlert("Error", message: "Server error")
             }
-
+            
         })
-        
     }
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         if identifier == "register" {
             return true
         } else if identifier == "authenticated" {
-            return !GlobalState.api_token.isEmpty
+            return GlobalState.Player?.attributes?.apiKey! != nil
         } else {
             return false
         }
