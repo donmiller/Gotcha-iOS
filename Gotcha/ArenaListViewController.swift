@@ -39,30 +39,6 @@ class ArenaListViewController: UIViewController, CLLocationManagerDelegate, UITa
     override func viewDidAppear(_ animated: Bool) {
         getArenas()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    @objc func getArenas() {
-        // "39.7799642, -86.272832"
-        print(String(_latitude))
-        print(String(_longitude))
-        RestAPIManager.sharedInstance.getArenas(latitude: String(_latitude), longitude: String(_longitude), onCompletion: { (json: JSON) in
-            
-            self._arenas = []
-            for item in json["data"].arrayValue
-            {
-                self._arenas.append(Arena(json: item))
-            }
-
-            DispatchQueue.main.async {
-                self.tblArenas.reloadData()
-                self.refreshControl.endRefreshing()
-            }
-        })
-    }
     
     //MARK: Geolocation
     func getCurrentLocation() {
@@ -111,36 +87,37 @@ class ArenaListViewController: UIViewController, CLLocationManagerDelegate, UITa
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "arena", for: indexPath)
-        let arenaAttributes = self._arenas[indexPath.row].attributes
+        let arena = self._arenas[indexPath.row]
 
         let locationName = cell.contentView.viewWithTag(10) as! UILabel
-        locationName.text = arenaAttributes?.locationName
+        locationName.text = arena.locationName
         
         let address1 = cell.contentView.viewWithTag(20) as! UILabel
-        address1.text = arenaAttributes?.streetAddress1
+        address1.text = arena.streetAddress1
         
         let cityStateZip = cell.contentView.viewWithTag(30) as! UILabel
-        cityStateZip.text = arenaAttributes?.city!
+        cityStateZip.text = arena.city!
         cityStateZip.text?.append(", ")
-        cityStateZip.text?.append((arenaAttributes?.state)!)
+        cityStateZip.text?.append((arena.state)!)
         cityStateZip.text?.append(" ")
-        cityStateZip.text?.append((arenaAttributes?.zipCode?.stringValue)!)
+        cityStateZip.text?.append((arena.zipCode?.stringValue)!)
         
         let enterArena = cell.contentView.viewWithTag(40) as! UIButton
         enterArena.setTitle("Enter Arena", for: .normal)
-        enterArena.rounded(color: UIColor.gotchaGreenRedColor)
+        enterArena.rounded(color: UIColor.gotchaPurple)
         
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let arenaAttributes = self._arenas[indexPath.row].attributes
+        let arena = self._arenas[indexPath.row]
         enterArena(arena: self._arenas[indexPath.row].id!)
         _ = shouldPerformSegue(withIdentifier: "enterArena", sender: true)
-        performSegue(withIdentifier: "enterArena", sender: arenaAttributes)
+        performSegue(withIdentifier: "enterArena", sender: arena)
     }
 
+    //MARK: Navigations
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         if let perform = sender as? Bool {
             return perform
@@ -150,25 +127,48 @@ class ArenaListViewController: UIViewController, CLLocationManagerDelegate, UITa
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let arena = sender as? ArenaAttributes,
+        if let arena = sender as? Arena,
             let destVC = segue.destination as? ArenaViewController {
             destVC.arena = arena
         }
     }
     
+    //MARK: API Calls
+    @objc func getArenas() {
+        // "39.7799642, -86.272832"
+        print(String(_latitude))
+        print(String(_longitude))
+        ArenasEndpoint.sharedInstance.getArenas(latitude: String(_latitude), longitude: String(_longitude), onCompletion: { (json: JSON) in
+            
+            self._arenas = []
+            for item in json["data"].arrayValue
+            {
+                self._arenas.append(Arena(json: item))
+            }
+            
+            DispatchQueue.main.async {
+                self.tblArenas.reloadData()
+                self.refreshControl.endRefreshing()
+            }
+        })
+    }
+    
     func enterArena(arena: Int) {
-        RestAPIManager.sharedInstance.enterArena(arena: arena, onCompletion: { (json: JSON) in
+        ArenasEndpoint.sharedInstance.enterArena(arena: arena, onCompletion: { (json: JSON) in
             print(json)
             GlobalState.Arena = Arena(json: json["data"])
         })
     }
     
     func registerDevice() {
-        RestAPIManager.sharedInstance.registerDevice(deviceToken: GlobalState.deviceToken, onCompletion: { (json: JSON) in
+        DevicesEndpoint.sharedInstance.registerDevice(deviceToken: GlobalState.deviceToken, onCompletion: { (json: JSON) in
             print(json)
             
         })
-
     }
     
+    @IBAction func logout() {
+        GlobalState.Player = nil
+        dismiss(animated: true, completion: nil)
+    }
 }

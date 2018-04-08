@@ -24,13 +24,13 @@ class RegistrationViewController: UIViewController {
     }
 
     func makePretty() {
-        btnRegister.rounded(color: UIColor.gotchaGreenRedColor)
-        btnCancel.rounded(color: UIColor.gotchaGreenRedColor)
+        btnRegister.rounded(color: UIColor.gotchaPurple)
+        btnCancel.rounded(color: UIColor.gotchaPurple)
     }
     
     @IBAction func registerPlayer(_ sender: Any) {
 
-        RestAPIManager.sharedInstance.register(name: txtName.text!, email_address: txtEmail.text!, password: txtPassword.text!, type: Constants.PlayerType, onCompletion: { (json: JSON) in
+        PlayersEndpoint.sharedInstance.register(name: txtName.text!, email_address: txtEmail.text!, password: txtPassword.text!, type: Constants.PlayerType, onCompletion: { (json: JSON) in
             
             //TODO: Add validation error handling
             

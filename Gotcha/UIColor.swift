@@ -9,11 +9,7 @@
 import UIKit
 
 extension UIColor {
-    static let gotchaRed : UIColor = UIColor.init(hex: "#ef3e42")
-    static let gotchaBlueColor : UIColor = UIColor.init(hex: "#c9e9ee")
-    static let gotchaYellowColor : UIColor = UIColor.init(hex: "#fbb034")
-    static let gotchaGreenRedColor : UIColor = UIColor.init(hex: "#b4d88b")
-    static let gotchaBlackColor : UIColor = UIColor.init(hex: "#231f20")
+    static let gotchaPurple : UIColor = UIColor.init(hex: "#ca8496")
     static let gotchaDarkGrayColor : UIColor = UIColor.init(hex: "#424143")
     static let gotchaGrayColor : UIColor = UIColor.init(hex: "#807f83")
     static let gotchaWhiteColor : UIColor = UIColor.init(hex: "#ffffff")

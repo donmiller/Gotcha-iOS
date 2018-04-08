@@ -14,6 +14,8 @@ class LoginViewController: UIViewController {
     @IBOutlet var txtEmail: UITextField!
     @IBOutlet var txtPassword: UITextField!
     @IBOutlet var btnLogin: UIButton!
+    @IBOutlet var lblRegistrationTitle: UILabel!
+    @IBOutlet var btnRegistration: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,13 +25,15 @@ class LoginViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        if GlobalState.Player?.attributes?.apiKey != nil {
+        if GlobalState.Player?.apiKey != nil {
             self.performSegue(withIdentifier: "authenticated", sender: nil)
         }
     }
 
     func makePretty() {
-        btnLogin.rounded(color: UIColor.gotchaGreenRedColor)
+        btnLogin.rounded(color: UIColor.gotchaPurple)
+        lblRegistrationTitle.textColor = UIColor.gotchaPurple
+        btnRegistration.setTitleColor(UIColor.gotchaPurple, for: .normal)
     }
     
     @IBAction func login(_ sender: Any) {
@@ -37,11 +41,11 @@ class LoginViewController: UIViewController {
     }
     
     func loginPlayer() {
-        RestAPIManager.sharedInstance.login(email_address: txtEmail.text!, password: txtPassword.text!, onCompletion: { (json: JSON) in
+        SessionEndpoint.sharedInstance.login(email_address: txtEmail.text!, password: txtPassword.text!, onCompletion: { (json: JSON) in
             
             let player : Player? = Player(json: json["data"])
             
-            if (player?.attributes?.apiKey != nil) {
+            if (player?.apiKey != nil) {
                 GlobalState.AuthenticatedUser = true
                 GlobalState.Player = player!
                 
@@ -69,7 +73,7 @@ class LoginViewController: UIViewController {
         if identifier == "register" {
             return true
         } else if identifier == "authenticated" {
-            return GlobalState.Player?.attributes?.apiKey! != nil
+            return GlobalState.Player?.apiKey! != nil
         } else {
             return false
         }
