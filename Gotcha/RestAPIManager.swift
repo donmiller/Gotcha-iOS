@@ -15,72 +15,8 @@ class RestAPIManager: NSObject {
     
     static let sharedInstance = RestAPIManager()
     
-    func register(name: String, email_address: String, password: String, type: String, onCompletion: @escaping (JSON) -> Void)
-    {
-        let route = Constants.BaseUrl + "/players"
-        var body: [String: Any] {
-            return ["data": ["type": type,
-                    "attributes": ["email_address": email_address, "name": name, "password": password]]]
-        }
-
-        makeHTTPPostRequest(path: route, body: body, authRequired: false, onCompletion: { json, err in
-            onCompletion(json as JSON)
-        })
-    }
-    
-    func login(email_address: String, password: String, onCompletion: @escaping (JSON) -> Void)
-    {
-        let route = Constants.BaseUrl + "/sessions"
-        var body: [String: Any] {
-            return ["data": ["attributes": ["email_address": email_address, "password": password]]]
-        }
-        
-        makeHTTPPostRequest(path: route, body: body, authRequired: false, onCompletion: { json, err in
-            onCompletion(json as JSON)
-        })
-    }
-    
-    func getArenas(latitude: String, longitude: String, onCompletion: @escaping (JSON) -> Void)
-    {
-        let route = Constants.BaseUrl + "/arenas?latitude=\(latitude)&longitude=\(longitude)"
-        
-        makeHTTPGetRequest(path: route, onCompletion: { json, err in
-            onCompletion(json as JSON)
-        })
-    }
-
-    func enterArena(arena: Int, onCompletion: @escaping (JSON) -> Void)
-    {
-        let route = Constants.BaseUrl + "/arenas/\(arena)/play"
-        
-        makeHTTPPostRequest(path: route, body: [:], authRequired: true, onCompletion: { json, err in
-            onCompletion(json as JSON)
-        })
-    }
-    
-    func leaveArena(arena: Int, onCompletion: @escaping (JSON) -> Void)
-    {
-        let route = Constants.BaseUrl + "/arenas/\(arena)/leave"
-        
-        makeHTTPPostRequest(path: route, body: [:], authRequired: true, onCompletion: { json, err in
-            onCompletion(json as JSON)
-        })
-    }
-    
-    func registerDevice(deviceToken: String, onCompletion: @escaping (JSON) -> Void)
-    {
-        let route = Constants.BaseUrl + "/devices"
-        var body: [String: Any] {
-            return ["data": ["attributes": ["token": deviceToken]]]
-        }
-        
-        makeHTTPPostRequest(path: route, body: body, authRequired: true, onCompletion: { json, err in
-            onCompletion(json as JSON)
-        })
-    }
-    
     // MARK: GET AND POST REQUESTS
-    private func makeHTTPPostRequest(path: String, body: [String: Any], authRequired: Bool, onCompletion: @escaping ServiceResponse) {
+    func makeHTTPPostRequest(path: String, body: [String: Any], authRequired: Bool, onCompletion: @escaping ServiceResponse) {
         var request = URLRequest(url: URL(string: path)!)
         request.httpMethod = "POST"
         
@@ -88,7 +24,7 @@ class RestAPIManager: NSObject {
             request.addValue("application/vnd.api+json", forHTTPHeaderField: "Content-Type")
             request.addValue("application/vnd.api+json", forHTTPHeaderField: "Accept")
             if authRequired {
-                request.addValue((GlobalState.Player?.attributes?.apiKey)!, forHTTPHeaderField: "Authorization")
+                request.addValue((GlobalState.Player?.apiKey)!, forHTTPHeaderField: "Authorization")
             }
             let jsonBody = try JSONSerialization.data(withJSONObject: body, options: .prettyPrinted)
             request.httpBody = jsonBody
@@ -121,12 +57,12 @@ class RestAPIManager: NSObject {
         }
     }
     
-    private func makeHTTPGetRequest(path: String, onCompletion: @escaping ServiceResponse) {
+    func makeHTTPGetRequest(path: String, onCompletion: @escaping ServiceResponse) {
         var request = URLRequest(url: URL(string: path)!)
         request.httpMethod = "GET"
         request.addValue("application/vnd.api+json", forHTTPHeaderField: "Content-Type")
         request.addValue("application/vnd.api+json", forHTTPHeaderField: "Accept")
-        request.setValue("Bearer \((GlobalState.Player?.attributes?.apiKey)!)", forHTTPHeaderField: "Authorization")
+        request.setValue("Bearer \((GlobalState.Player?.apiKey)!)", forHTTPHeaderField: "Authorization")
         let session = URLSession.shared
 
         let task = session.dataTask(with: request, completionHandler: {data, response, error -> Void in
