@@ -93,6 +93,7 @@
                         <outlet property="lblRegistrationTitle" destination="pOE-zV-QIU" id="xqK-A1-S0p"/>
                         <outlet property="txtEmail" destination="rGQ-Cb-ZMk" id="Osb-7h-o0C"/>
                         <outlet property="txtPassword" destination="gvF-bV-Yra" id="78P-yT-zRD"/>
+                        <outlet property="viewMain" destination="8bC-Xf-vdC" id="8Eb-qr-cAs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

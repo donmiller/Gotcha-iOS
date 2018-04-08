@@ -11,6 +11,7 @@ import SwiftyJSON
 
 class LoginViewController: UIViewController {
 
+    @IBOutlet var viewMain: UIView!
     @IBOutlet var txtEmail: UITextField!
     @IBOutlet var txtPassword: UITextField!
     @IBOutlet var btnLogin: UIButton!
@@ -24,12 +25,14 @@ class LoginViewController: UIViewController {
         makePretty()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         if GlobalState.Player?.apiKey != nil {
             self.performSegue(withIdentifier: "authenticated", sender: nil)
+        } else {
+            self.viewMain.isHidden = false
         }
     }
-
+    
     func makePretty() {
         btnLogin.rounded(color: UIColor.gotchaPurple)
         lblRegistrationTitle.textColor = UIColor.gotchaPurple
@@ -71,6 +74,7 @@ class LoginViewController: UIViewController {
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         if identifier == "register" {
+            self.viewMain.isHidden = true
             return true
         } else if identifier == "authenticated" {
             return GlobalState.Player?.apiKey! != nil
