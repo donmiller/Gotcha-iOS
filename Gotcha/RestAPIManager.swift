@@ -6,16 +6,40 @@
 //  Copyright © 2018 GroundSpeed. All rights reserved.
 //
 
-import UIKit
 import SwiftyJSON
 
 typealias ServiceResponse = (JSON, NSError?) -> Void
 
-class RestAPIManager: NSObject {
+class RestAPIManager {
     
     static let sharedInstance = RestAPIManager()
     
-    // MARK: GET AND POST REQUESTS
+    func makeHTTPGetRequest(path: String, onCompletion: @escaping ServiceResponse) {
+        var request = URLRequest(url: URL(string: path)!)
+        request.httpMethod = "GET"
+        request.addValue("application/vnd.api+json", forHTTPHeaderField: "Content-Type")
+        request.addValue("application/vnd.api+json", forHTTPHeaderField: "Accept")
+        request.setValue("Bearer \((GlobalState.Player?.apiKey)!)", forHTTPHeaderField: "Authorization")
+        let session = URLSession.shared
+        
+        let task = session.dataTask(with: request, completionHandler: {data, response, error -> Void in
+            
+            do {
+                if let jsonData = data {
+                    let json:JSON = try JSON(data: jsonData)
+                    print(json)
+                    onCompletion(json, nil)
+                } else {
+                    onCompletion(JSON.null, error as NSError?)
+                }
+            } catch let error as NSError {
+                print(error)
+            }
+            
+        })
+        task.resume()
+    }
+    
     func makeHTTPPostRequest(path: String, body: [String: Any], authRequired: Bool, onCompletion: @escaping ServiceResponse) {
         var request = URLRequest(url: URL(string: path)!)
         request.httpMethod = "POST"
@@ -56,31 +80,4 @@ class RestAPIManager: NSObject {
             onCompletion(JSON.null, nil)
         }
     }
-    
-    func makeHTTPGetRequest(path: String, onCompletion: @escaping ServiceResponse) {
-        var request = URLRequest(url: URL(string: path)!)
-        request.httpMethod = "GET"
-        request.addValue("application/vnd.api+json", forHTTPHeaderField: "Content-Type")
-        request.addValue("application/vnd.api+json", forHTTPHeaderField: "Accept")
-        request.setValue("Bearer \((GlobalState.Player?.apiKey)!)", forHTTPHeaderField: "Authorization")
-        let session = URLSession.shared
-
-        let task = session.dataTask(with: request, completionHandler: {data, response, error -> Void in
-            
-            do {
-                if let jsonData = data {
-                    let json:JSON = try JSON(data: jsonData)
-                    print(json)
-                    onCompletion(json, nil)
-                } else {
-                    onCompletion(JSON.null, error as NSError?)
-                }
-            } catch let error as NSError {
-                print(error)
-            }
-            
-        })
-        task.resume()
-    }
-
 }

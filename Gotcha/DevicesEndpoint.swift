@@ -6,7 +6,6 @@
 //  Copyright © 2018 GroundSpeed. All rights reserved.
 //
 
-import UIKit
 import SwiftyJSON
 
 class DevicesEndpoint {
