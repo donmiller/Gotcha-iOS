@@ -11,6 +11,5 @@ import UIKit
 class GlobalState {
     static var AuthenticatedUser : Bool = false
     static var Player : Player? = nil
-    static var api_token : String = ""
     static var deviceToken : String = ""
 }

@@ -78,7 +78,7 @@ class RestAPIManager: NSObject {
         do {
             request.addValue("application/vnd.api+json", forHTTPHeaderField: "Content-Type")
             if authRequired {
-                request.addValue(GlobalState.api_token, forHTTPHeaderField: "Authorization")
+                request.addValue((GlobalState.Player?.attributes?.api_key)!, forHTTPHeaderField: "Authorization")
             }
             let jsonBody = try JSONSerialization.data(withJSONObject: body, options: .prettyPrinted)
             request.httpBody = jsonBody
@@ -110,7 +110,7 @@ class RestAPIManager: NSObject {
         request.httpMethod = "GET"
         request.addValue("application/vnd.api+json", forHTTPHeaderField: "Content-Type")
         request.addValue("application/vnd.api+json", forHTTPHeaderField: "Accept")
-        request.setValue("Bearer \(GlobalState.api_token)", forHTTPHeaderField: "Authorization")
+        request.setValue("Bearer \((GlobalState.Player?.attributes?.api_key)!)", forHTTPHeaderField: "Authorization")
         let session = URLSession.shared
 
         let task = session.dataTask(with: request, completionHandler: {data, response, error -> Void in

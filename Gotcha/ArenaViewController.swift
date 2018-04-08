@@ -27,6 +27,5 @@ class ArenaViewController: UIViewController {
     func makePretty() {
         btnNext.rounded(color: UIColor.gotchaGreenRedColor)
         btnCapture.rounded(color: UIColor.gotchaGreenRedColor)
-    }
-
+    }    
 }
