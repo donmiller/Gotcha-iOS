@@ -37,12 +37,18 @@ class RegistrationViewController: UIViewController, UIImagePickerControllerDeleg
     @IBAction func registerPlayer(_ sender: Any) {
         
         var avatar : String = ""
-        if self.imgAvatar.image != UIImage(named: "Ninja-100.png") {
-            let resizedImage = self.imgAvatar.image?.scaleImageWith(scaledToSize: 20)
-            let imageData = UIImagePNGRepresentation(resizedImage!)
-            let base64String = imageData!.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0))
-            avatar = base64String
+        
+        let imgData: NSData = NSData(data: UIImagePNGRepresentation(self.imgAvatar.image!)!)
+        let imageSizeMB: CGFloat = CGFloat(imgData.length)/1024/1024
+        var imageFactor: CGFloat = 1.0
+        if imageSizeMB > 1 {
+            imageFactor = imageSizeMB
         }
+        
+        let resizedImage = self.imgAvatar.image?.scaleImageWith(scaledToSize: imageFactor)
+        let imageData = UIImagePNGRepresentation(resizedImage!)
+        let base64String = imageData!.base64EncodedString(options: .lineLength64Characters)
+        avatar = "\(Constants.Base64ImageHeader)\(base64String)"
 
         PlayersEndpoint.sharedInstance.register(name: txtName.text!, email_address: txtEmail.text!, password: txtPassword.text!, type: Constants.PlayerType, avatar: avatar, onCompletion: { (json: JSON) in
             
@@ -62,7 +68,7 @@ class RegistrationViewController: UIViewController, UIImagePickerControllerDeleg
     
     @IBAction func getAvatar(_ sender: Any) {
         
-        self.imgAvatar.image = UIImage(named: "")
+        //self.imgAvatar.image = UIImage(named: "")
         
         let actionSheetController: UIAlertController = UIAlertController(title: "Take or Choose Avatar", message: nil, preferredStyle: .actionSheet)
         actionSheetController.view.tintColor = UIColor.gotchaPurple
