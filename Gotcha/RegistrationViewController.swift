@@ -38,14 +38,7 @@ class RegistrationViewController: UIViewController, UIImagePickerControllerDeleg
         
         var avatar : String = ""
         
-        let imgData: NSData = NSData(data: UIImagePNGRepresentation(self.imgAvatar.image!)!)
-        let imageSizeMB: CGFloat = CGFloat(imgData.length)/1024/1024
-        var imageFactor: CGFloat = 1.0
-        if imageSizeMB > 1 {
-            imageFactor = imageSizeMB
-        }
-        
-        let resizedImage = self.imgAvatar.image?.scaleImageWith(scaledToSize: imageFactor)
+        let resizedImage = self.imgAvatar.image?.scaleImageWith(sizeLimitMB: 1.0)
         let imageData = UIImagePNGRepresentation(resizedImage!)
         let base64String = imageData!.base64EncodedString(options: .lineLength64Characters)
         avatar = "\(Constants.Base64ImageHeader)\(base64String)"
