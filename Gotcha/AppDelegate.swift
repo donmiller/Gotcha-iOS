@@ -8,7 +8,6 @@
 
 import UIKit
 import UserNotifications
-import SwiftyJSON
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -36,6 +35,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         GlobalState.deviceToken = deviceToken.toHexString()
                 
         print("Got token data! \(deviceToken.toHexString())")
+    }
+    
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        print(userInfo)
+        
+        let mainStoryboardIpad : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc : UIViewController = mainStoryboardIpad.instantiateViewController(withIdentifier: "Arena") as UIViewController
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        self.window?.rootViewController = vc
+        self.window?.makeKeyAndVisible()
+        
     }
     
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {

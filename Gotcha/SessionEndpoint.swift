@@ -27,6 +27,7 @@ class SessionEndpoint {
     func logout(onCompletion: @escaping (JSON) -> Void)
     {
         RestAPIManager.sharedInstance.makeHTTPDeleteRequest(path: route, onCompletion: { json, err in
+            GlobalState.Player = nil
             onCompletion(json as JSON)
         })
     }

@@ -25,7 +25,7 @@ class LoginViewController: UIViewController {
         makePretty()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         if GlobalState.Player?.apiKey != nil {
             self.performSegue(withIdentifier: "authenticated", sender: nil)
         } else {
@@ -41,6 +41,10 @@ class LoginViewController: UIViewController {
     
     @IBAction func login(_ sender: Any) {
         loginPlayer()    
+    }
+    
+    @IBAction func unwindSegue(_ sender: UIStoryboardSegue) {
+        print(sender.source)
     }
     
     func loginPlayer() {

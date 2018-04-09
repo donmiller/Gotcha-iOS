@@ -14,13 +14,18 @@ class ArenaViewController: UIViewController {
     @IBOutlet var lblArenaName: UILabel!
     @IBOutlet var lblCompetitorAvatar: UIImageView!
     @IBOutlet var lblCompetitorName: UILabel!
-    @IBOutlet var btnNext: UIButton!
     @IBOutlet var btnCapture: UIButton!
     @IBOutlet var btnLeaveArena: UIButton!
-    @IBOutlet var viewOpponent: UIView!
+    @IBOutlet var viewMatch: UIView!
     @IBOutlet var viewWaiting: UIView!
     
     var arena : Arena?
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if self.isNotAuthenticated() {
+            performSegue(withIdentifier: "unwindToLogin", sender: self)
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,11 +34,10 @@ class ArenaViewController: UIViewController {
     }
     
     func makePretty() {
-        btnNext.rounded(color: UIColor.gotchaPurple)
         btnCapture.rounded(color: UIColor.gotchaPurple)
         btnLeaveArena.rounded(color: UIColor.gotchaPurple)
         viewWaiting.isHidden = false
-        viewOpponent.isHidden = true
+        viewMatch.isHidden = true
     }
     
     @IBAction func leaveArena() {

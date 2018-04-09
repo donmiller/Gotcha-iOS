@@ -10,6 +10,14 @@ import UIKit
 
 extension UIViewController {
     
+    func isNotAuthenticated() -> Bool {
+        
+        guard let notAuthenticated: Bool = (GlobalState.Player?.apiKey?.isEmpty) else {
+            return true
+        }        
+        return notAuthenticated
+    }
+    
     func hideKeyboardWhenTappedAround() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
         tap.cancelsTouchesInView = false

@@ -82,6 +82,5 @@ class LogicHelper {
         let limit = formatter.number(from: numberToFormat) as? NSDecimalNumber
         
         return limit!
-    }
-    
+    }    
 }
