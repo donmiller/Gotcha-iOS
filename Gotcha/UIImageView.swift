@@ -15,4 +15,13 @@ extension UIImageView {
         self.image = nameImage
         self.tintColor = tintColor
     }
+    
+    func circleWithBorder(color: CGColor) {
+        self.layer.borderWidth = 2.0
+        self.layer.borderColor = color
+        self.layer.masksToBounds = true
+        self.layer.cornerRadius = self.frame.size.width/2
+        self.clipsToBounds = true
+
+    }
 }

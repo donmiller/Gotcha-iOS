@@ -168,6 +168,9 @@ class ArenaListViewController: UIViewController, CLLocationManagerDelegate, UITa
     }
     
     @IBAction func logout() {
+        SessionEndpoint.sharedInstance.logout(onCompletion: { (json: JSON) in
+            print(json)
+        })
         GlobalState.Player = nil
         dismiss(animated: true, completion: nil)
     }
