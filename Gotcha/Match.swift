@@ -11,7 +11,7 @@ import SwiftyJSON
 
 class Match {
 
-    var id : Int?
+    var id : Int
     var foundAt: Double?
     var matchedAt: Double?
     var arena: Int?

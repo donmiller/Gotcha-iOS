@@ -33,13 +33,10 @@ class ArenaListViewController: UIViewController, CLLocationManagerDelegate, UITa
         self.tblArenas.dataSource = self
         registerDevice()
         getCurrentLocation()
+        getArenas()
         self.tblArenas.addSubview(self.refreshControl)
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        getArenas()
-    }
-    
+        
     //MARK: Geolocation
     func getCurrentLocation() {
         self._locationManager.requestWhenInUseAuthorization()
@@ -128,7 +125,7 @@ class ArenaListViewController: UIViewController, CLLocationManagerDelegate, UITa
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let arena = sender as? Arena,
-            let destVC = segue.destination as? ArenaViewController {
+            let destVC = segue.destination as? PlayerWaitingViewController {
             destVC.arena = arena
         }
     }
@@ -155,13 +152,14 @@ class ArenaListViewController: UIViewController, CLLocationManagerDelegate, UITa
     
     func enterArena(arena: Int) {
         ArenasEndpoint.sharedInstance.enterArena(arena: arena, onCompletion: { (json: JSON) in
-            print(json)
-            GlobalState.Arena = Arena(json: json["data"])
+            DispatchQueue.main.async {
+                GlobalState.Arena = Arena(json: json["data"])
+            }
         })
     }
     
     func registerDevice() {
-        DevicesEndpoint.sharedInstance.registerDevice(deviceToken: GlobalState.deviceToken, onCompletion: { (json: JSON) in
+        DevicesEndpoint.sharedInstance.registerDevice(deviceToken: GlobalState.DeviceToken, onCompletion: { (json: JSON) in
             print(json)
             
         })
@@ -171,7 +169,6 @@ class ArenaListViewController: UIViewController, CLLocationManagerDelegate, UITa
         SessionEndpoint.sharedInstance.logout(onCompletion: { (json: JSON) in
             print(json)
         })
-        GlobalState.Player = nil
         dismiss(animated: true, completion: nil)
     }
 }

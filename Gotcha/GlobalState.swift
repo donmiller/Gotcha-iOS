@@ -12,5 +12,6 @@ class GlobalState {
     static var AuthenticatedUser : Bool = false
     static var Player : Player? = nil
     static var Arena : Arena? = nil
-    static var deviceToken : String = ""
+    static var DeviceToken : String = ""
+    static var Match : Match? = nil
 }

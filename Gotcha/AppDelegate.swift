@@ -33,9 +33,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
 
         LogicHelper.saveDeviceToCloud("\(deviceToken.toHexString())")
-        GlobalState.deviceToken = deviceToken.toHexString()
+        GlobalState.DeviceToken = deviceToken.toHexString()
                 
         print("Got token data! \(deviceToken.toHexString())")
+    }
+    
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        print(userInfo)
+        
+        GlobalState.Match = Match(json: JSON(userInfo["data"] as! NSDictionary))
+        
+        let mainStoryboardIpad : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc : UIViewController = mainStoryboardIpad.instantiateViewController(withIdentifier: "Match") as UIViewController
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        self.window?.rootViewController = vc
+        self.window?.makeKeyAndVisible()
+        
     }
     
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
