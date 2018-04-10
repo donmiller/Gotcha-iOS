@@ -61,6 +61,16 @@ class MatchViewController: UIViewController {
                     self.lblSeekerPoints.text = "55"
                 }
             })
+            
+            //GET Scores
+            ArenasEndpoint.sharedInstance.getScores(arena: (GlobalState.Match?.arena)!, onCompletion: { (json: JSON) in
+                
+//                let score = Score(json: json["meta"])
+//                DispatchQueue.main.async {
+//
+//                }
+                
+            })
 
         }
     }

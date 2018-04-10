@@ -41,9 +41,17 @@ class PlayerWaitingViewController: UIViewController {
     
     func loadPlayer() {
         lblPlayerName.text = GlobalState.Player?.name!
-        lblPlayerRank.text = "#1"
-        lblPlayerPoints.text = "150"
         imgPlayerAvatar.downloadedFrom(link: (GlobalState.Player?.avatar!)!)
+        
+        ArenasEndpoint.sharedInstance.getScores(arena: (arena?.id)!, onCompletion: { (json: JSON) in
+            
+            let score = Score(json: json["meta"])
+            DispatchQueue.main.async {
+                self.lblPlayerPoints.text = String(describing: score.totalPoints!)
+                self.lblPlayerRank.text = score.placement
+            }
+        })
+        
     }
     
     @IBAction func leaveArena() {

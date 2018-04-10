@@ -152,8 +152,9 @@ class ArenaListViewController: UIViewController, CLLocationManagerDelegate, UITa
     
     func enterArena(arena: Int) {
         ArenasEndpoint.sharedInstance.enterArena(arena: arena, onCompletion: { (json: JSON) in
-            print(json)
-            GlobalState.Arena = Arena(json: json["data"])
+            DispatchQueue.main.async {
+                GlobalState.Arena = Arena(json: json["data"])
+            }
         })
     }
     
