@@ -14,7 +14,7 @@
 		952124FC2079DD5C00B8452F /* DevicesEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952124FB2079DD5C00B8452F /* DevicesEndpoint.swift */; };
 		952124FE2079DD7400B8452F /* MatchesEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952124FD2079DD7400B8452F /* MatchesEndpoint.swift */; };
 		95212500207A754200B8452F /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952124FF207A754200B8452F /* UIImage.swift */; };
-		953A838D20794E26008E3994 /* ArenaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953A838C20794E26008E3994 /* ArenaViewController.swift */; };
+		953A838D20794E26008E3994 /* PlayerWaitingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953A838C20794E26008E3994 /* PlayerWaitingViewController.swift */; };
 		953D843A202E70CA001E4FD7 /* RestAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953D8439202E70CA001E4FD7 /* RestAPIManager.swift */; };
 		953D843B202E70CA001E4FD7 /* RestAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953D8439202E70CA001E4FD7 /* RestAPIManager.swift */; };
 		953D843D202E744E001E4FD7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953D843C202E744E001E4FD7 /* Constants.swift */; };
@@ -49,6 +49,7 @@
 		95E8028F2023F9460075FEEE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 95E8028E2023F9460075FEEE /* Assets.xcassets */; };
 		95E802922023F9460075FEEE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95E802902023F9460075FEEE /* LaunchScreen.storyboard */; };
 		95E8029D2023F9460075FEEE /* GotchaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E8029C2023F9460075FEEE /* GotchaTests.swift */; };
+		95F10965207C405100C37AD3 /* MatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F10964207C405100C37AD3 /* MatchViewController.swift */; };
 		95FBFD262079C25700EF2C5D /* Match.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FBFD252079C25700EF2C5D /* Match.swift */; };
 		C296414746A1DA7B0CB304C9 /* Pods_Gotcha.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F08FD81B7F6BFA4818D3C622 /* Pods_Gotcha.framework */; };
 /* End PBXBuildFile section */
@@ -72,7 +73,7 @@
 		952124FB2079DD5C00B8452F /* DevicesEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicesEndpoint.swift; sourceTree = "<group>"; };
 		952124FD2079DD7400B8452F /* MatchesEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchesEndpoint.swift; sourceTree = "<group>"; };
 		952124FF207A754200B8452F /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
-		953A838C20794E26008E3994 /* ArenaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArenaViewController.swift; sourceTree = "<group>"; };
+		953A838C20794E26008E3994 /* PlayerWaitingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerWaitingViewController.swift; sourceTree = "<group>"; };
 		953D8439202E70CA001E4FD7 /* RestAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestAPIManager.swift; sourceTree = "<group>"; };
 		953D843C202E744E001E4FD7 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		953D843F202FD174001E4FD7 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
@@ -106,6 +107,7 @@
 		95E802982023F9460075FEEE /* GotchaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GotchaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		95E8029C2023F9460075FEEE /* GotchaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GotchaTests.swift; sourceTree = "<group>"; };
 		95E8029E2023F9460075FEEE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		95F10964207C405100C37AD3 /* MatchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchViewController.swift; sourceTree = "<group>"; };
 		95FBFD252079C25700EF2C5D /* Match.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Match.swift; sourceTree = "<group>"; };
 		BAB6B31B0027314FFAB69842 /* Pods-GotchaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GotchaTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GotchaTests/Pods-GotchaTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E92D5A7043FBCD91DF11FD31 /* Pods_GotchaTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GotchaTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -159,7 +161,8 @@
 			isa = PBXGroup;
 			children = (
 				954D8EBC2041F2C800A0DE0F /* ArenaListViewController.swift */,
-				953A838C20794E26008E3994 /* ArenaViewController.swift */,
+				953A838C20794E26008E3994 /* PlayerWaitingViewController.swift */,
+				95F10964207C405100C37AD3 /* MatchViewController.swift */,
 			);
 			name = Arena;
 			sourceTree = "<group>";
@@ -504,7 +507,7 @@
 				95ABFF502051C39F00C3F032 /* UIApplication.swift in Sources */,
 				95ABFF532051C3D700C3F032 /* UIColor.swift in Sources */,
 				95E8028A2023F9460075FEEE /* LoginViewController.swift in Sources */,
-				953A838D20794E26008E3994 /* ArenaViewController.swift in Sources */,
+				953A838D20794E26008E3994 /* PlayerWaitingViewController.swift in Sources */,
 				95ABFF572051C43B00C3F032 /* UIButton.swift in Sources */,
 				952124FA2079DD4F00B8452F /* ArenasEndpoint.swift in Sources */,
 				954D8EB92041EFBD00A0DE0F /* Arena.swift in Sources */,
@@ -518,6 +521,7 @@
 				95ABFF5E2051C4FF00C3F032 /* Double.swift in Sources */,
 				952124FC2079DD5C00B8452F /* DevicesEndpoint.swift in Sources */,
 				95E52AD7203624AF00A66B92 /* RegistrationViewController.swift in Sources */,
+				95F10965207C405100C37AD3 /* MatchViewController.swift in Sources */,
 				95ABFF662051C55A00C3F032 /* JSON.swift in Sources */,
 				953D84492030A363001E4FD7 /* LogicHelper.swift in Sources */,
 				95E802882023F9460075FEEE /* AppDelegate.swift in Sources */,

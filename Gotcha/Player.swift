@@ -23,7 +23,7 @@ class Player {
         if (json["attributes"] != JSON.null) {
             var attributes = json["attributes"]
             apiKey = attributes["api_key"].stringValue
-            avatar = attributes["avatar"].stringValue
+            avatar = attributes["avatar"]["url"].stringValue
             emailAddress = attributes["email_address"].stringValue
             name = attributes["name"].stringValue
             password = attributes["password"].stringValue

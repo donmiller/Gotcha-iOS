@@ -24,5 +24,14 @@ class PlayersEndpoint {
             onCompletion(json as JSON)
         })
     }
-    
+
+    func getPlayer(id: Int, onCompletion: @escaping (JSON) -> Void)
+    {
+        let path = route + "/\(id)"
+        
+        RestAPIManager.sharedInstance.makeHTTPGetRequest(path: path, onCompletion: { json, err in
+            onCompletion(json as JSON)
+        })
+    }
+
 }

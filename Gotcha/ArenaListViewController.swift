@@ -125,7 +125,7 @@ class ArenaListViewController: UIViewController, CLLocationManagerDelegate, UITa
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let arena = sender as? Arena,
-            let destVC = segue.destination as? ArenaViewController {
+            let destVC = segue.destination as? PlayerWaitingViewController {
             destVC.arena = arena
         }
     }
@@ -158,7 +158,7 @@ class ArenaListViewController: UIViewController, CLLocationManagerDelegate, UITa
     }
     
     func registerDevice() {
-        DevicesEndpoint.sharedInstance.registerDevice(deviceToken: GlobalState.deviceToken, onCompletion: { (json: JSON) in
+        DevicesEndpoint.sharedInstance.registerDevice(deviceToken: GlobalState.DeviceToken, onCompletion: { (json: JSON) in
             print(json)
             
         })

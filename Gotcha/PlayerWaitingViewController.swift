@@ -9,35 +9,41 @@
 import UIKit
 import SwiftyJSON
 
-class ArenaViewController: UIViewController {
+class PlayerWaitingViewController: UIViewController {
 
     @IBOutlet var lblArenaName: UILabel!
-    @IBOutlet var lblCompetitorAvatar: UIImageView!
-    @IBOutlet var lblCompetitorName: UILabel!
-    @IBOutlet var btnCapture: UIButton!
-    @IBOutlet var btnLeaveArena: UIButton!
-    @IBOutlet var viewMatch: UIView!
     @IBOutlet var viewWaiting: UIView!
+    @IBOutlet var imgPlayerAvatar: UIImageView!
+    @IBOutlet var lblPlayerName: UILabel!
+    @IBOutlet var lblPlayerRank: UILabel!
+    @IBOutlet var lblPlayerPoints: UILabel!
+    @IBOutlet var btnLeaveArena: UIButton!
     
     var arena : Arena?
     
-    override func viewDidAppear(_ animated: Bool) {
-        if self.isNotAuthenticated() {
-            performSegue(withIdentifier: "unwindToLogin", sender: self)
-        }
-    }
+//    override func viewDidAppear(_ animated: Bool) {
+//        if self.isNotAuthenticated() {
+//            performSegue(withIdentifier: "unwindToLogin", sender: self)
+//        }
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         lblArenaName.text = arena?.locationName!
         makePretty()
+        loadPlayer()
     }
     
     func makePretty() {
-        btnCapture.rounded(color: UIColor.gotchaPurple)
         btnLeaveArena.rounded(color: UIColor.gotchaPurple)
-        viewWaiting.isHidden = false
-        viewMatch.isHidden = true
+        imgPlayerAvatar.circleWithBorder(color: UIColor.gotchaPurple.cgColor)
+    }
+    
+    func loadPlayer() {
+        lblPlayerName.text = GlobalState.Player?.name!
+        lblPlayerRank.text = "#1"
+        lblPlayerPoints.text = "150"
+        imgPlayerAvatar.downloadedFrom(link: (GlobalState.Player?.avatar!)!)
     }
     
     @IBAction func leaveArena() {
