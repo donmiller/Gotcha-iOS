@@ -16,7 +16,7 @@ class SessionEndpoint {
     func login(email_address: String, password: String, onCompletion: @escaping (JSON) -> Void)
     {
         var body: [String: Any] {
-            return ["data": ["attributes": ["email_address": email_address, "password": password]]]
+            return ["data": ["type": Constants.SessionType, "attributes": ["email_address": email_address, "password": password]]]
         }
         
         RestAPIManager.sharedInstance.makeHTTPPostRequest(path: route, body: body, authRequired: false, onCompletion: { json, err in
