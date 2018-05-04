@@ -20,5 +20,5 @@ class Constants {
     static var ClientSecret : String = "fantastic"
     
     static var SessionType: String = "session"
-
+    static var MatchType: String = "match"
 }
