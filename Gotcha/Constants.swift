@@ -21,4 +21,5 @@ class Constants {
     
     static var SessionType: String = "session"
     static var MatchType: String = "match"
+    static var DeviceType: String = "device"
 }
