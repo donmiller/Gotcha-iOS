@@ -16,7 +16,7 @@ class DevicesEndpoint {
     func registerDevice(deviceToken: String, onCompletion: @escaping (JSON) -> Void)
     {
         var body: [String: Any] {
-            return ["data": ["type": "device", "attributes": ["token": deviceToken]]]
+            return ["data": ["type": Constants.DeviceType, "attributes": ["token": deviceToken]]]
         }
         
         RestAPIManager.sharedInstance.makeHTTPPostRequest(path: route, body: body, authRequired: true, onCompletion: { json, err in

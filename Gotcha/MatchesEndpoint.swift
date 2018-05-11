@@ -16,7 +16,7 @@ class MatchesEndpoint {
     func newMatch(arena: Int, onCompletion: @escaping (JSON) -> Void)
     {
         var body: [String: Any] {
-            return ["data": ["type": "match", "attributes": ["arena": "\(arena)"]]]
+            return ["data": ["type": Constants.MatchType, "attributes": ["arena": "\(arena)"]]]
         }
         
         RestAPIManager.sharedInstance.makeHTTPPostRequest(path: route, body: body, authRequired: true, onCompletion: { json, err in
