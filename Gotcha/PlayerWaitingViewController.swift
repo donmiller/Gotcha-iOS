@@ -43,8 +43,9 @@ class PlayerWaitingViewController: UIViewController {
         lblPlayerName.text = GlobalState.Player?.name!
         imgPlayerAvatar.downloadedFrom(link: (GlobalState.Player?.avatar!)!)
         
-        ArenasEndpoint.sharedInstance.getScores(arena: (arena?.id)!, onCompletion: { (json: JSON) in
-            
+        ScoresEndpoint.sharedInstance.getScores(playerId: (GlobalState.Player?.id)!,
+                                                arenaId: (arena?.id)!,
+                                                onCompletion: { (json: JSON) in
             let score = Score(json: json["meta"])
             DispatchQueue.main.async {
                 self.lblPlayerPoints.text = String(describing: score.totalPoints!)

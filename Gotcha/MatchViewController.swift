@@ -45,8 +45,17 @@ class MatchViewController: UIViewController {
                     let opponent = Player(json: json["data"])
                     self.imgOpponentAvatar.downloadedFrom(link: opponent.avatar!)
                     self.lblOpponentName.text = opponent.name!
-                    self.lblOpponentRank.text = "#2"
-                    self.lblOpponentPoints.text = "55"
+                }
+            })
+            
+            //GET Scores for Opponent
+            ScoresEndpoint.sharedInstance.getScores(playerId: (GlobalState.Match?.opponent)!,
+                                                    arenaId: (GlobalState.Match?.arena)!,
+                                                    onCompletion: { (json: JSON) in
+                let score = Score(json: json["meta"])
+                DispatchQueue.main.async {
+                    self.lblOpponentPoints.text = String(describing: score.totalPoints!)
+                    self.lblOpponentRank.text = score.placement
                 }
             })
             
@@ -57,21 +66,19 @@ class MatchViewController: UIViewController {
                     let opponent = Player(json: json["data"])
                     self.imgSeekerAvatar.downloadedFrom(link: opponent.avatar!)
                     self.lblSeekerName.text = opponent.name!
-                    self.lblSeekerRank.text = "#2"
-                    self.lblSeekerPoints.text = "55"
                 }
             })
             
-            //GET Scores
-            ArenasEndpoint.sharedInstance.getScores(arena: (GlobalState.Match?.arena)!, onCompletion: { (json: JSON) in
-                
-//                let score = Score(json: json["meta"])
-//                DispatchQueue.main.async {
-//
-//                }
-                
+            //GET Scores for Seeker
+            ScoresEndpoint.sharedInstance.getScores(playerId: (GlobalState.Match?.seeker)!,
+                                                    arenaId: (GlobalState.Match?.arena)!,
+                                                    onCompletion: { (json: JSON) in
+                let score = Score(json: json["meta"])
+                DispatchQueue.main.async {
+                    self.lblSeekerPoints.text = String(describing: score.totalPoints!)
+                    self.lblSeekerRank.text = score.placement
+                }
             })
-
         }
     }
 

@@ -39,13 +39,4 @@ class ArenasEndpoint {
             onCompletion(json as JSON)
         })
     }
-    
-    func getScores(arena: Int, onCompletion: @escaping (JSON) -> Void)
-    {
-        let path = route + "/\(arena)/scores"
-        
-        RestAPIManager.sharedInstance.makeHTTPGetRequest(path: path, onCompletion: { json, err in
-            onCompletion(json as JSON)
-        })
-    }
 }
