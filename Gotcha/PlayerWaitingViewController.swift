@@ -62,13 +62,5 @@ class PlayerWaitingViewController: UIViewController {
                 self.dismiss(animated: true, completion: nil)
             }
         })
-    }
-    
-    @IBAction func nextMatch() {
-        MatchesEndpoint.sharedInstance.newMatch(arena: (GlobalState.Arena?.id)!, onCompletion: { (json: JSON) in
-            
-            print(json)
-            
-        })
-    }
+    }    
 }
