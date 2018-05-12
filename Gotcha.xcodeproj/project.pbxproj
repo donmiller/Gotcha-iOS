@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2117C2DD20A3E4670060B85B /* ScoresEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2117C2DC20A3E4670060B85B /* ScoresEndpoint.swift */; };
 		7CE939975595D2EF2F21AD09 /* Pods_GotchaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E92D5A7043FBCD91DF11FD31 /* Pods_GotchaTests.framework */; };
 		952124F62079DC6C00B8452F /* PlayersEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952124F52079DC6C00B8452F /* PlayersEndpoint.swift */; };
 		952124F82079DD3A00B8452F /* SessionEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952124F72079DD3A00B8452F /* SessionEndpoint.swift */; };
@@ -66,6 +67,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2117C2DC20A3E4670060B85B /* ScoresEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoresEndpoint.swift; sourceTree = "<group>"; };
 		3D38CD69D36DBBEFF2BD74D6 /* Pods-Gotcha.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gotcha.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Gotcha/Pods-Gotcha.debug.xcconfig"; sourceTree = "<group>"; };
 		56BC6F43DDB31ED6276CE170 /* Pods-GotchaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GotchaTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-GotchaTests/Pods-GotchaTests.release.xcconfig"; sourceTree = "<group>"; };
 		952124F52079DC6C00B8452F /* PlayersEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayersEndpoint.swift; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 				952124FB2079DD5C00B8452F /* DevicesEndpoint.swift */,
 				952124FD2079DD7400B8452F /* MatchesEndpoint.swift */,
 				953D8439202E70CA001E4FD7 /* RestAPIManager.swift */,
+				2117C2DC20A3E4670060B85B /* ScoresEndpoint.swift */,
 			);
 			name = API;
 			sourceTree = "<group>";
@@ -533,6 +536,7 @@
 				95ABFF552051C41E00C3F032 /* UITextField.swift in Sources */,
 				95ABFF682051C59300C3F032 /* Date.swift in Sources */,
 				954A396B20685A0D00222775 /* Data.swift in Sources */,
+				2117C2DD20A3E4670060B85B /* ScoresEndpoint.swift in Sources */,
 				95E52AD320361E9300A66B92 /* GlobalState.swift in Sources */,
 				95ABFF622051C52500C3F032 /* String.swift in Sources */,
 				952124F62079DC6C00B8452F /* PlayersEndpoint.swift in Sources */,
