@@ -41,14 +41,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         print(userInfo)
         
-        GlobalState.Match = Match(json: JSON(userInfo["data"] as! NSDictionary))
+        let aps = userInfo["aps"] as! NSDictionary
+        let category = aps["category"] as! String
         
-        let mainStoryboardIpad : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc : UIViewController = mainStoryboardIpad.instantiateViewController(withIdentifier: "Match") as UIViewController
-        self.window = UIWindow(frame: UIScreen.main.bounds)
-        self.window?.rootViewController = vc
-        self.window?.makeKeyAndVisible()
-        
+        switch category {
+        case "new_match":
+            GlobalState.Match = Match(json: JSON(userInfo["data"] as! NSDictionary))
+            let mainStoryboardIpad : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc : UIViewController = mainStoryboardIpad.instantiateViewController(withIdentifier: "Match") as UIViewController
+            self.window = UIWindow(frame: UIScreen.main.bounds)
+            self.window?.rootViewController = vc
+            self.window?.makeKeyAndVisible()
+        case "confirm_capture":
+            let mainStoryboardIpad : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc : UIViewController = mainStoryboardIpad.instantiateViewController(withIdentifier: "ConfirmCapture") as UIViewController
+            self.window = UIWindow(frame: UIScreen.main.bounds)
+            self.window?.rootViewController = vc
+            self.window?.makeKeyAndVisible()
+            //This only gets sent to the player that did not press the capture button
+            //slide up capture view controller to confirm code
+            //Once they enter the code, call http://staging.gotcha.run/api/matches/:id/captured -- validate whether code matches 400 if it doesn't
+        case "successful_capture":
+            print("load successful capture screen")
+            //This gets sent to both players; slide up `captured` view controller and taptic with `OK` button
+            //This is a result of the `confirm_capture` giving a 200
+        default:
+            print("Notification received but no action taken. userInfo: \(userInfo)")
+        }
     }
     
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
