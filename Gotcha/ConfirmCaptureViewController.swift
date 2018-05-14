@@ -9,7 +9,7 @@
 import UIKit
 import SwiftyJSON
 
-class ConfirmCaptureViewController: UIViewController {
+class ConfirmCaptureViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet var btnSubmit: UIButton!
     @IBOutlet var txtFirstDigit: UITextField!
@@ -21,8 +21,54 @@ class ConfirmCaptureViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         makePretty()
+        setupTextFields()
+        self.hideKeyboardWhenTappedAround()
     }
 
+    func setupTextFields() {
+        txtFirstDigit.delegate = self
+        txtSecondDigit.delegate = self
+        txtThirdDigit.delegate = self
+        txtFourthDigit.delegate = self
+        
+        txtFirstDigit.addTarget(self, action: #selector(self.textFieldDidChange(textField:)), for: UIControlEvents.editingChanged)
+        txtSecondDigit.addTarget(self, action: #selector(self.textFieldDidChange(textField:)), for: UIControlEvents.editingChanged)
+        txtThirdDigit.addTarget(self, action: #selector(self.textFieldDidChange(textField:)), for: UIControlEvents.editingChanged)
+        txtFourthDigit.addTarget(self, action: #selector(self.textFieldDidChange(textField:)), for: UIControlEvents.editingChanged)
+    }
+    
+    @objc func textFieldDidChange(textField: UITextField){
+        let text = textField.text
+        if  text?.count == 1 {
+            switch textField{
+            case txtFirstDigit:
+                txtSecondDigit.becomeFirstResponder()
+            case txtSecondDigit:
+                txtThirdDigit.becomeFirstResponder()
+            case txtThirdDigit:
+                txtFourthDigit.becomeFirstResponder()
+            case txtFourthDigit:
+                txtFourthDigit.resignFirstResponder()
+            default:
+                break
+            }
+        }
+        if  text?.count == 0 {
+            switch textField{
+            case txtFirstDigit:
+                txtFirstDigit.becomeFirstResponder()
+            case txtSecondDigit:
+                txtFirstDigit.becomeFirstResponder()
+            case txtThirdDigit:
+                txtSecondDigit.becomeFirstResponder()
+            case txtFourthDigit:
+                txtThirdDigit.becomeFirstResponder()
+            default:
+                break
+            }
+        }
+    }
+    
     func makePretty() {
         btnSubmit.rounded(color: UIColor.gotchaPurple)
     }
