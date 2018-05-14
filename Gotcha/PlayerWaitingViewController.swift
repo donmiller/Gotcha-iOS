@@ -32,6 +32,8 @@ class PlayerWaitingViewController: UIViewController {
         lblArenaName.text = arena?.locationName!
         makePretty()
         loadPlayer()
+        
+        //TODO: Check to see if there is a match; if there is go to match screen and load match
     }
     
     func makePretty() {
