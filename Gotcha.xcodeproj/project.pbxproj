@@ -26,6 +26,7 @@
 		954A396B20685A0D00222775 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954A396A20685A0D00222775 /* Data.swift */; };
 		954D8EB92041EFBD00A0DE0F /* Arena.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954D8EB72041EFBD00A0DE0F /* Arena.swift */; };
 		954D8EBD2041F2C800A0DE0F /* ArenaListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954D8EBC2041F2C800A0DE0F /* ArenaListViewController.swift */; };
+		9563782020A92C21006C3C63 /* ConfirmCaptureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9563781F20A92C21006C3C63 /* ConfirmCaptureViewController.swift */; };
 		95ABFF502051C39F00C3F032 /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95ABFF4F2051C39F00C3F032 /* UIApplication.swift */; };
 		95ABFF512051C39F00C3F032 /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95ABFF4F2051C39F00C3F032 /* UIApplication.swift */; };
 		95ABFF532051C3D700C3F032 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95ABFF522051C3D700C3F032 /* UIColor.swift */; };
@@ -85,6 +86,7 @@
 		954A396A20685A0D00222775 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		954D8EB72041EFBD00A0DE0F /* Arena.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Arena.swift; sourceTree = "<group>"; };
 		954D8EBC2041F2C800A0DE0F /* ArenaListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArenaListViewController.swift; sourceTree = "<group>"; };
+		9563781F20A92C21006C3C63 /* ConfirmCaptureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmCaptureViewController.swift; sourceTree = "<group>"; };
 		95ABFF4F2051C39F00C3F032 /* UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
 		95ABFF522051C3D700C3F032 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		95ABFF542051C41E00C3F032 /* UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 				954D8EBC2041F2C800A0DE0F /* ArenaListViewController.swift */,
 				953A838C20794E26008E3994 /* PlayerWaitingViewController.swift */,
 				95F10964207C405100C37AD3 /* MatchViewController.swift */,
+				9563781F20A92C21006C3C63 /* ConfirmCaptureViewController.swift */,
 			);
 			name = Arena;
 			sourceTree = "<group>";
@@ -543,6 +546,7 @@
 				95ABFF5C2051C4BF00C3F032 /* UIView.swift in Sources */,
 				952124F82079DD3A00B8452F /* SessionEndpoint.swift in Sources */,
 				953D843D202E744E001E4FD7 /* Constants.swift in Sources */,
+				9563782020A92C21006C3C63 /* ConfirmCaptureViewController.swift in Sources */,
 				95FBFD262079C25700EF2C5D /* Match.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

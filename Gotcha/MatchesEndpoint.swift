@@ -24,5 +24,16 @@ class MatchesEndpoint {
         })
     }
     
-
+    func captured(match: Int, token: Int, onCompletion: @escaping (JSON) -> Void)
+    {
+        var body: [String: Any] {
+            return ["data": ["attributes": ["token": "\(token)"]]]
+        }
+        
+        let path = route + "/\(match)/captured"
+        
+        RestAPIManager.sharedInstance.makeHTTPPostRequest(path: path, body: body, authRequired: true, onCompletion: { json, err in
+            onCompletion(json as JSON)
+        })
+    }
 }
